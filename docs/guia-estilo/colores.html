@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Colores — CoffMunnity</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <a href="../index.html" class="sidebar-brand">
+      <div class="logo">☕ CoffMunnity</div>
+      <div class="subtitle">Documentación · TFG DAW</div>
+    </a>
+    <nav>
+      <div class="nav-section">
+        <div class="nav-section-title">Inicio</div>
+        <a href="../index.html" class="nav-link"><span class="icon">🏠</span> Portada</a>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-title">Guía de Estilo</div>
+        <a href="colores.html" class="nav-link active"><span class="icon">🎨</span> Colores</a>
+        <a href="tipografia.html" class="nav-link"><span class="icon">🔤</span> Tipografía</a>
+        <a href="componentes.html" class="nav-link"><span class="icon">🧩</span> Componentes</a>
+        <a href="responsive.html" class="nav-link"><span class="icon">📱</span> Responsive</a>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-title">Diseño</div>
+        <a href="../diseño/prototipo-movil.html" class="nav-link"><span class="icon">📱</span> Prototipo Móvil</a>
+        <a href="../diseño/prototipo-tablet.html" class="nav-link"><span class="icon">💻</span> Prototipo Tablet</a>
+        <a href="../diseño/prototipo-escritorio.html" class="nav-link"><span class="icon">🖥️</span> Prototipo
+          Escritorio</a>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-title">Técnico</div>
+        <a href="../tecnico/backend-php.html" class="nav-link"><span class="icon">🐘</span> Backend PHP</a>
+        <a href="../tecnico/frontend-js.html" class="nav-link"><span class="icon">🟨</span> Frontend JS</a>
+        <a href="../tecnico/base-de-datos.html" class="nav-link"><span class="icon">🗄️</span> Base de Datos</a>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-title">Despliegue</div>
+        <a href="../despliegue/docker.html" class="nav-link"><span class="icon">🐳</span> Docker</a>
+        <a href="../despliegue/git-github.html" class="nav-link"><span class="icon">🐙</span> Git & GitHub</a>
+        <a href="../despliegue/cloud-aws.html" class="nav-link"><span class="icon">☁️</span> Cloud AWS</a>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-title">Anexos</div>
+        <a href="../anexos/manual-usuario.html" class="nav-link"><span class="icon">📖</span> Manual de Usuario</a>
+      </div>
+    </nav>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <div class="hero" data-icon="🎨">
+      <div class="hero-badge">Guía de Estilo · DIW</div>
+      <h1><span>Colores</span></h1>
+      <p>Paleta cromática de CoffMunnity inspirada en los tonos naturales del café: espresso, caramelo y crema,
+        complementados con un acento verde musgo artesanal.</p>
+    </div>
+
+    <div class="content">
+
+      <!-- Paleta Principal -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-icon">☕</div>
+          <h2>Paleta Principal</h2>
+          <span class="section-tag">Uso principal</span>
+        </div>
+        <p class="prose" style="margin-bottom:16px; font-size:14px; color:var(--roast);">Protagonistas de la identidad
+          visual. Encabezados, botones, fondos y elementos de marca.</p>
+        <div class="swatches">
+          <div class="swatch">
+            <div class="swatch-color" style="background:#2C1810;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Espresso</div>
+              <div class="swatch-hex">#2C1810</div>
+            </div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-color" style="background:#6B3A2A;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Roast</div>
+              <div class="swatch-hex">#6B3A2A</div>
+            </div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-color" style="background:#C4813B;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Caramel</div>
+              <div class="swatch-hex">#C4813B</div>
+            </div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-color" style="background:#E8C99A;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Latte</div>
+              <div class="swatch-hex">#E8C99A</div>
+            </div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-color" style="background:#FAF3E8; border-bottom: 1px solid #E8C99A;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Cream</div>
+              <div class="swatch-hex">#FAF3E8</div>
+            </div>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>HEX</th>
+                <th>RGB</th>
+                <th>Uso</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Espresso</td>
+                <td><code>#2C1810</code></td>
+                <td>rgb(44, 24, 16)</td>
+                <td>Textos principales, navbar</td>
+              </tr>
+              <tr>
+                <td>Roast</td>
+                <td><code>#6B3A2A</code></td>
+                <td>rgb(107, 58, 42)</td>
+                <td>Botones primarios, íconos activos</td>
+              </tr>
+              <tr>
+                <td>Caramel</td>
+                <td><code>#C4813B</code></td>
+                <td>rgb(196, 129, 59)</td>
+                <td>CTAs, highlights, enlaces</td>
+              </tr>
+              <tr>
+                <td>Latte</td>
+                <td><code>#E8C99A</code></td>
+                <td>rgb(232, 201, 154)</td>
+                <td>Fondos de tarjetas, hover states</td>
+              </tr>
+              <tr>
+                <td>Cream</td>
+                <td><code>#FAF3E8</code></td>
+                <td>rgb(250, 243, 232)</td>
+                <td>Fondo general de la app</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Paleta Secundaria -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-icon">🌿</div>
+          <h2>Paleta Secundaria</h2>
+          <span class="section-tag">Apoyo</span>
+        </div>
+        <div class="swatches">
+          <div class="swatch">
+            <div class="swatch-color" style="background:#4A6741;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Moss</div>
+              <div class="swatch-hex">#4A6741</div>
+            </div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-color" style="background:#B8C4BB;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Steam</div>
+              <div class="swatch-hex">#B8C4BB</div>
+            </div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-color" style="background:#F5F0EA; border-bottom: 1px solid #E8C99A;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Chalk</div>
+              <div class="swatch-hex">#F5F0EA</div>
+            </div>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>HEX</th>
+                <th>Uso</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Moss</td>
+                <td><code>#4A6741</code></td>
+                <td>Etiquetas, badges de comunidad</td>
+              </tr>
+              <tr>
+                <td>Steam</td>
+                <td><code>#B8C4BB</code></td>
+                <td>Bordes, divisores, placeholders</td>
+              </tr>
+              <tr>
+                <td>Chalk</td>
+                <td><code>#F5F0EA</code></td>
+                <td>Fondos alternativos, modales</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Colores de Estado -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-icon">🚦</div>
+          <h2>Colores de Estado</h2>
+          <span class="section-tag">Sistema</span>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>HEX</th>
+                <th>Estado</th>
+                <th>Uso</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Matcha</td>
+                <td><code>#5A8A4A</code></td>
+                <td>✅ Éxito</td>
+                <td>Confirmaciones, reseñas publicadas</td>
+              </tr>
+              <tr>
+                <td>Amber</td>
+                <td><code>#D4890A</code></td>
+                <td>⚠️ Aviso</td>
+                <td>Advertencias, formularios incompletos</td>
+              </tr>
+              <tr>
+                <td>Brick</td>
+                <td><code>#B94040</code></td>
+                <td>❌ Error</td>
+                <td>Errores, eliminación de contenido</td>
+              </tr>
+              <tr>
+                <td>Sky Roast</td>
+                <td><code>#3A7CA5</code></td>
+                <td>ℹ️ Info</td>
+                <td>Notificaciones informativas</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Gradientes -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-icon">🌅</div>
+          <h2>Gradientes</h2>
+        </div>
+        <div class="swatches">
+          <div class="swatch">
+            <div class="swatch-color"
+              style="background: linear-gradient(135deg, #2C1810 0%, #6B3A2A 50%, #C4813B 100%); height:90px;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Gradient Coffee</div>
+              <div class="swatch-hex">Hero, splash screen</div>
+            </div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-color"
+              style="background: linear-gradient(180deg, #FAF3E8 0%, #E8C99A 100%); height:90px; border-bottom:1px solid #E8C99A;">
+            </div>
+            <div class="swatch-info">
+              <div class="swatch-name">Gradient Latte</div>
+              <div class="swatch-hex">Secciones, cards</div>
+            </div>
+          </div>
+        </div>
+        <div class="prose">
+          <pre><code>/* Gradient Coffee — Hero principal */
+background: linear-gradient(135deg, #2C1810 0%, #6B3A2A 50%, #C4813B 100%);
+
+/* Gradient Latte — Fondos de sección */
+background: linear-gradient(180deg, #FAF3E8 0%, #E8C99A 100%);</code></pre>
+        </div>
+      </div>
+
+      <!-- Accesibilidad -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-icon">♿</div>
+          <h2>Contraste y Accesibilidad</h2>
+          <span class="section-tag">WCAG 2.1</span>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Combinación</th>
+                <th>Ratio</th>
+                <th>Nivel</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Espresso sobre Cream</td>
+                <td>16.2:1</td>
+                <td>✅ AAA</td>
+              </tr>
+              <tr>
+                <td>Roast sobre Cream</td>
+                <td>8.4:1</td>
+                <td>✅ AAA</td>
+              </tr>
+              <tr>
+                <td>Caramel sobre Espresso</td>
+                <td>4.8:1</td>
+                <td>✅ AA</td>
+              </tr>
+              <tr>
+                <td>Cream sobre Roast</td>
+                <td>8.4:1</td>
+                <td>✅ AAA</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout warning">
+          ⚠️ Evitar usar <strong>Caramel</strong> sobre <strong>Latte</strong> para texto de cuerpo — el contraste
+          (2.1:1) es insuficiente para lectura.
+        </div>
+      </div>
+
+      <!-- Variables CSS -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-icon">💻</div>
+          <h2>Variables CSS</h2>
+        </div>
+        <div class="prose">
+          <pre><code>:root {
+  /* Paleta Principal */
+  --color-espresso:  #2C1810;
+  --color-roast:     #6B3A2A;
+  --color-caramel:   #C4813B;
+  --color-latte:     #E8C99A;
+  --color-cream:     #FAF3E8;
+
+  /* Paleta Secundaria */
+  --color-moss:      #4A6741;
+  --color-steam:     #B8C4BB;
+  --color-chalk:     #F5F0EA;
+
+  /* Estados */
+  --color-success:   #5A8A4A;
+  --color-warning:   #D4890A;
+  --color-error:     #B94040;
+  --color-info:      #3A7CA5;
+}</code></pre>
+        </div>
+      </div>
+
+    </div>
+    <footer class="footer">CoffMunnity · TFG DAW · Guía de Estilo · Colores</footer>
+  </main>
+
+</body>
+
+</html>
