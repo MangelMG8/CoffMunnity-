@@ -1,6 +1,6 @@
 # 🔤 Tipografía — CoffMunnity
 
-[← Volver al índice](index.md)
+[← Volver al índice](../index.md)
 
 CoffMunnity utiliza **Montserrat** como fuente única del sistema. Su geometría limpia y carácter moderno se alinea perfectamente con la identidad de la plataforma: contemporánea, legible y con personalidad propia.
 
