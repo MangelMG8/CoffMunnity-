@@ -1,6 +1,6 @@
 title: "☕ CoffMunnity — Docs"
 description: "Documentación del TFG · DAW · Proyecto Intermodular"
-baseurl: "/CoffMunnity"  
+baseurl: "/CoffMunnity-"   
 url: "https://MangelMG8.github.io" 
 
 # ── Tema ──────────────────────────────────────────────────────────────────────
@@ -13,7 +13,8 @@ fonts:
   body: "Montserrat"
 
 # ── Color scheme ──────────────────────────────────────────────────────────────
-color_scheme: coffmunnity
+# Usar "default" hasta añadir el SCSS personalizado al repo (ver instrucciones abajo)
+color_scheme: default
 
 # ── Navegación ────────────────────────────────────────────────────────────────
 nav_sort: order
@@ -23,7 +24,6 @@ search:
   previews: 3
   preview_words_before: 5
   preview_words_after: 10
-  tokenizer_separator: /[\s/]+/
 
 # ── Pie de página ─────────────────────────────────────────────────────────────
 footer_content: "CoffMunnity · TFG DAW · Documentación"
@@ -31,28 +31,10 @@ footer_content: "CoffMunnity · TFG DAW · Documentación"
 # ── Enlace de edición en GitHub ───────────────────────────────────────────────
 gh_edit_link: true
 gh_edit_link_text: "Editar en GitHub"
-gh_edit_repository: "https://github.com/tu-usuario/nombre-de-tu-repo"  # ← cambia esto
+gh_edit_repository: "https://github.com/tu-usuario/CoffMunnity-"  # ← cambia tu-usuario
 gh_edit_branch: "main"
 gh_edit_source: docs
 gh_edit_view_mode: "tree"
-
-# ── Callouts ──────────────────────────────────────────────────────────────────
-callouts_level: quiet
-callouts:
-  highlight:
-    color: yellow
-  important:
-    title: Importante
-    color: blue
-  new:
-    title: Nuevo
-    color: green
-  note:
-    title: Nota
-    color: purple
-  warning:
-    title: Advertencia
-    color: red
 
 # ── Plugins compatibles con GitHub Pages ─────────────────────────────────────
 plugins:

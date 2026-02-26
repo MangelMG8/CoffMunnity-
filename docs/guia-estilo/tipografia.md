@@ -1,6 +1,13 @@
+---
+layout: default
+title: Tipografía
+parent: Guía de Estilo
+nav_order: 2
+---
+
 # 🔤 Tipografía — CoffMunnity
 
-[← Volver al índice](../index.md)
+[← Volver al índice](index.md)
 
 CoffMunnity utiliza **Montserrat** como fuente única del sistema. Su geometría limpia y carácter moderno se alinea perfectamente con la identidad de la plataforma: contemporánea, legible y con personalidad propia.
 
@@ -190,13 +197,13 @@ small, .caption {
 
 ## Reglas de uso
 
- **Sí:**
+✅ **Sí:**
 - Usar Montserrat para todos los elementos de texto de la interfaz.
 - Mantener la escala modular definida.
 - Combinar pesos para crear jerarquía visual clara.
 - Usar `letter-spacing` negativo en títulos grandes para mejorar la composición.
 
- **No:**
+❌ **No:**
 - Mezclar otras fuentes sin justificación documentada.
 - Usar pesos no definidos en la escala (ej: 100, 200, 900).
 - Aplicar `text-transform: uppercase` a párrafos de cuerpo.

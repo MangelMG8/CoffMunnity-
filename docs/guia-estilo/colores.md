@@ -1,6 +1,13 @@
-# Colores — CoffMunnity
+---
+layout: default
+title: Colores
+parent: Guía de Estilo
+nav_order: 1
+---
 
-[← Volver al índice](../index.md)
+# 🎨 Colores — CoffMunnity
+
+[← Volver al índice](index.md)
 
 La paleta de CoffMunnity está inspirada en los tonos naturales del café: desde la crema del espresso hasta el marrón oscuro del grano tostado, complementados con un acento verde musgo que evoca lo artesanal y sostenible.
 

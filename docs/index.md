@@ -1,6 +1,6 @@
 ---
 layout: home
-title: ☕ CoffMunnity — Documentación
+title: CoffMunnity — Documentación
 nav_order: 1
 ---
 
