@@ -1,21 +1,22 @@
 title: "☕ CoffMunnity — Docs"
 description: "Documentación del TFG · DAW · Proyecto Intermodular"
 baseurl: "/CoffMunnity"  
-url: "https://MangelMG8.github.io"  
+url: "https://MangelMG8.github.io" 
 
-theme: just-the-docs
+# ── Tema ──────────────────────────────────────────────────────────────────────
+remote_theme: just-the-docs/just-the-docs@v0.10.0
 
-# Fuente desde Google Fonts (Montserrat)
+# ── Tipografía (Google Fonts) ─────────────────────────────────────────────────
 google_fonts: "Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400"
 fonts:
   heading: "Montserrat"
   body: "Montserrat"
 
-# Color de acento — Caramel (#C4813B)
-color_scheme: default  
+# ── Color scheme ──────────────────────────────────────────────────────────────
+color_scheme: coffmunnity
 
-# Navegación
-nav_sort: order         
+# ── Navegación ────────────────────────────────────────────────────────────────
+nav_sort: order
 search_enabled: true
 search:
   heading_level: 2
@@ -24,10 +25,10 @@ search:
   preview_words_after: 10
   tokenizer_separator: /[\s/]+/
 
-# Pie de página
+# ── Pie de página ─────────────────────────────────────────────────────────────
 footer_content: "CoffMunnity · TFG DAW · Documentación"
 
-# Repositorio (muestra enlace en la cabecera)
+# ── Enlace de edición en GitHub ───────────────────────────────────────────────
 gh_edit_link: true
 gh_edit_link_text: "Editar en GitHub"
 gh_edit_repository: "https://github.com/tu-usuario/nombre-de-tu-repo"  # ← cambia esto
@@ -35,7 +36,7 @@ gh_edit_branch: "main"
 gh_edit_source: docs
 gh_edit_view_mode: "tree"
 
-# Callouts (cajas de aviso en los .md)
+# ── Callouts ──────────────────────────────────────────────────────────────────
 callouts_level: quiet
 callouts:
   highlight:
@@ -53,11 +54,12 @@ callouts:
     title: Advertencia
     color: red
 
-# Plugins mínimos compatibles con GitHub Pages
+# ── Plugins compatibles con GitHub Pages ─────────────────────────────────────
 plugins:
+  - jekyll-remote-theme
   - jekyll-seo-tag
 
-# Excluir archivos del build
+# ── Excluir del build ─────────────────────────────────────────────────────────
 exclude:
   - "*.gemspec"
   - Gemfile
