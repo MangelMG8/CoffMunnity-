@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tipografía — CoffMunnity</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    /* Estilos específicos de esta página */
+    .type-specimen {
+      background: var(--white);
+      border: 1px solid var(--latte);
+      border-radius: 10px;
+      padding: 28px 32px;
+      margin: 16px 0 24px;
+    }
+
+    .specimen-row {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--latte);
+    }
+
+    .specimen-row:last-child {
+      border-bottom: none;
+    }
+
+    .specimen-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--steam);
+      width: 90px;
+      flex-shrink: 0;
+    }
+
+    .specimen-text {
+      font-family: var(--font);
+      color: var(--espresso);
+      line-height: 1.2;
+    }
+
+    .weight-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 12px;
+      margin: 16px 0 24px;
+    }
+
+    .weight-card {
+      background: var(--white);
+      border: 1px solid var(--latte);
+      border-radius: 10px;
+      padding: 20px 18px;
+    }
+
+    .weight-sample {
+      font-size: 28px;
+      color: var(--espresso);
+      line-height: 1;
+      margin-bottom: 12px;
+      font-family: var(--font);
+    }
+
+    .weight-name {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--roast);
+      margin-bottom: 2px;
+    }
+
+    .weight-value {
+      font-size: 11px;
+      color: var(--steam);
+      font-family: monospace;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <a href="../index.html" class="sidebar-brand">
+      <div class="logo">☕ CoffMunnity</div>
+      <div class="subtitle">Documentación · TFG DAW</div>
+    </a>
+    <nav>
+      <div class="nav-section">
+        <div class="nav-section-title">Inicio</div>
+        <a href="../index.html" class="nav-link"><span class="icon">🏠</span> Portada</a>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-title">Guía de Estilo</div>
+        <a href="colores.html" class="nav-link"><span class="icon">🎨</span> Colores</a>
+        <a href="tipografia.html" class="nav-link active"><span class="icon">🔤</span> Tipografía</a>
+        <a href="componentes.html" class="nav-link"><span class="icon">🧩</span> Componentes</a>
+        <a href="responsive.html" class="nav-link"><span class="icon">📱</span> Responsive</a>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-title">Diseño</div>
+        <a href="../diseño/prototipo-movil.html" class="nav-link"><span class="icon">📱</span> Prototipo Móvil</a>
+        <a href="../diseño/prototipo-tablet.html" class="nav-link"><span class="icon">💻</span> Prototipo Tablet</a>
+        <a href="../diseño/prototipo-escritorio.html" class="nav-link"><span class="icon">🖥️</span> Prototipo
+          Escritorio</a>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-title">Técnico</div>
+        <a href="../tecnico/backend-php.html" class="nav-link"><span class="icon">🐘</span> Backend PHP</a>
+        <a href="../tecnico/frontend-js.html" class="nav-link"><span class="icon">🟨</span> Frontend JS</a>
+        <a href="../tecnico/base-de-datos.html" class="nav-link"><span class="icon">🗄️</span> Base de Datos</a>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-title">Despliegue</div>
+        <a href="../despliegue/docker.html" class="nav-link"><span class="icon">🐳</span> Docker</a>
+        <a href="../despliegue/git-github.html" class="nav-link"><span class="icon">🐙</span> Git & GitHub</a>
+        <a href="../despliegue/cloud-aws.html" class="nav-link"><span class="icon">☁️</span> Cloud AWS</a>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-title">Anexos</div>
+        <a href="../anexos/manual-usuario.html" class="nav-link"><span class="icon">📖</span> Manual de Usuario</a>
+      </div>
+    </nav>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <div class="hero" data-icon="🔤">
+      <div class="hero-badge">Guía de Estilo · DIW</div>
+      <h1><span>Tipografía</span></h1>
+      <p>CoffMunnity usa <strong style="color:var(--caramel)">Montserrat</strong> como fuente única del sistema. Su
+        geometría limpia y carácter moderno encajan con la identidad de la plataforma: contemporánea, legible y con
+        personalidad.</p>
+    </div>
+
+    <div class="content">
+
+      <!-- Fuente principal -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-icon">🔤</div>
+          <h2>Fuente Principal — Montserrat</h2>
+          <span class="section-tag">Google Fonts</span>
+        </div>
+        <div class="prose">
+          <p>Diseñada por <strong>Julieta Ulanovsky</strong>, inspirada en la tipografía urbana del barrio de Montserrat
+            (Buenos Aires). Licencia SIL Open Font License 1.1.</p>
+        </div>
+        <div class="type-specimen">
+          <div class="specimen-row">
+            <span class="specimen-label">48px · 800</span>
+            <span class="specimen-text"
+              style="font-size:48px; font-weight:800; letter-spacing:-0.03em;">CoffMunnity</span>
+          </div>
+          <div class="specimen-row">
+            <span class="specimen-label">32px · 700</span>
+            <span class="specimen-text" style="font-size:32px; font-weight:700; letter-spacing:-0.02em;">Comunidad del
+              café</span>
+          </div>
+          <div class="specimen-row">
+            <span class="specimen-label">24px · 700</span>
+            <span class="specimen-text" style="font-size:24px; font-weight:700;">Guía de estilo visual</span>
+          </div>
+          <div class="specimen-row">
+            <span class="specimen-label">18px · 600</span>
+            <span class="specimen-text" style="font-size:18px; font-weight:600;">Reseñas · Comunidad · Minijuego</span>
+          </div>
+          <div class="specimen-row">
+            <span class="specimen-label">16px · 400</span>
+            <span class="specimen-text" style="font-size:16px; font-weight:400; line-height:1.6;">El texto de cuerpo
+              está configurado a 16px con peso regular y line-height de 1.6 para máxima legibilidad en párrafos
+              largos.</span>
+          </div>
+          <div class="specimen-row">
+            <span class="specimen-label">12px · 600</span>
+            <span class="specimen-text"
+              style="font-size:12px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase;">ETIQUETA · BADGE
+              · METADATA</span>
+          </div>
+        </div>
+
+        <div class="prose">
+          <h3>Importación</h3>
+          <pre><code>&lt;!-- En el &lt;head&gt; del HTML --&gt;
+&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
+&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;
+&lt;link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet"&gt;</code></pre>
+
+          <pre><code>/* Declaración base en CSS */
+body {
+  font-family: 'Montserrat', sans-serif;
+}</code></pre>
+        </div>
+      </div>
+
+      <!-- Pesos -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-icon">⚖️</div>
+          <h2>Pesos tipográficos</h2>
+        </div>
+        <div class="weight-grid">
+          <div class="weight-card">
+            <div class="weight-sample" style="font-weight:300;">Aa</div>
+            <div class="weight-name">Light</div>
+            <div class="weight-value">font-weight: 300</div>
+          </div>
+          <div class="weight-card">
+            <div class="weight-sample" style="font-weight:400;">Aa</div>
+            <div class="weight-name">Regular</div>
+            <div class="weight-value">font-weight: 400</div>
+          </div>
+          <div class="weight-card">
+            <div class="weight-sample" style="font-weight:500;">Aa</div>
+            <div class="weight-name">Medium</div>
+            <div class="weight-value">font-weight: 500</div>
+          </div>
+          <div class="weight-card">
+            <div class="weight-sample" style="font-weight:600;">Aa</div>
+            <div class="weight-name">SemiBold</div>
+            <div class="weight-value">font-weight: 600</div>
+          </div>
+          <div class="weight-card">
+            <div class="weight-sample" style="font-weight:700;">Aa</div>
+            <div class="weight-name">Bold</div>
+            <div class="weight-value">font-weight: 700</div>
+          </div>
+          <div class="weight-card">
+            <div class="weight-sample" style="font-weight:800;">Aa</div>
+            <div class="weight-name">ExtraBold</div>
+            <div class="weight-value">font-weight: 800</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Escala -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-icon">📐</div>
+          <h2>Escala tipográfica</h2>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Token</th>
+                <th>Tamaño</th>
+                <th>Peso</th>
+                <th>Line-height</th>
+                <th>Uso</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>--text-xs</td>
+                <td>12px</td>
+                <td>500</td>
+                <td>1.4</td>
+                <td>Badges, metadatos, fechas</td>
+              </tr>
+              <tr>
+                <td>--text-sm</td>
+                <td>14px</td>
+                <td>400</td>
+                <td>1.5</td>
+                <td>Captions, textos secundarios</td>
+              </tr>
+              <tr>
+                <td>--text-base</td>
+                <td>16px</td>
+                <td>400</td>
+                <td>1.6</td>
+                <td>Cuerpo principal</td>
+              </tr>
+              <tr>
+                <td>--text-md</td>
+                <td>18px</td>
+                <td>500</td>
+                <td>1.5</td>
+                <td>Intro de artículo, destacados</td>
+              </tr>
+              <tr>
+                <td>--text-lg</td>
+                <td>20px</td>
+                <td>600</td>
+                <td>1.4</td>
+                <td>Subtítulos H3</td>
+              </tr>
+              <tr>
+                <td>--text-xl</td>
+                <td>24px</td>
+                <td>700</td>
+                <td>1.3</td>
+                <td>Títulos H2</td>
+              </tr>
+              <tr>
+                <td>--text-2xl</td>
+                <td>32px</td>
+                <td>700</td>
+                <td>1.2</td>
+                <td>Títulos H1, page titles</td>
+              </tr>
+              <tr>
+                <td>--text-3xl</td>
+                <td>48px</td>
+                <td>800</td>
+                <td>1.1</td>
+                <td>Hero title, splash</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="prose">
+          <pre><code>:root {
+  --font:       'Montserrat', sans-serif;
+  --text-xs:    0.75rem;   /* 12px */
+  --text-sm:    0.875rem;  /* 14px */
+  --text-base:  1rem;      /* 16px */
+  --text-md:    1.125rem;  /* 18px */
+  --text-lg:    1.25rem;   /* 20px */
+  --text-xl:    1.5rem;    /* 24px */
+  --text-2xl:   2rem;      /* 32px */
+  --text-3xl:   3rem;      /* 48px */
+}</code></pre>
+        </div>
+      </div>
+
+      <!-- Jerarquía -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-icon">🏗️</div>
+          <h2>Jerarquía de encabezados</h2>
+        </div>
+        <div class="prose">
+          <pre><code>h1 { font-size: 2rem;      font-weight: 800; letter-spacing: -0.02em; }
+h2 { font-size: 1.5rem;    font-weight: 700; letter-spacing: -0.01em; }
+h3 { font-size: 1.25rem;   font-weight: 600; }
+h4 { font-size: 1.125rem;  font-weight: 600; }
+p  { font-size: 1rem;      font-weight: 400; line-height: 1.6; }
+small { font-size: 0.875rem; font-weight: 400; color: var(--steam); }</code></pre>
+        </div>
+      </div>
+
+      <!-- Usos específicos -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-icon">🎯</div>
+          <h2>Usos específicos en la plataforma</h2>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Elemento</th>
+                <th>Tamaño</th>
+                <th>Peso</th>
+                <th>Notas</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Botones</td>
+                <td>14px</td>
+                <td>700</td>
+                <td>uppercase, letter-spacing: 0.05em</td>
+              </tr>
+              <tr>
+                <td>Nombre de usuario</td>
+                <td>18px</td>
+                <td>600</td>
+                <td>Color: var(--roast)</td>
+              </tr>
+              <tr>
+                <td>Puntuación / Score</td>
+                <td>32px</td>
+                <td>800</td>
+                <td>Color: var(--caramel), kerning negativo</td>
+              </tr>
+              <tr>
+                <td>Badges / Etiquetas</td>
+                <td>12px</td>
+                <td>600</td>
+                <td>uppercase, letter-spacing: 0.08em</td>
+              </tr>
+              <tr>
+                <td>Navegación sidebar</td>
+                <td>13px</td>
+                <td>500</td>
+                <td>Color: rgba(255,255,255,0.65)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Reglas -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-icon">📋</div>
+          <h2>Reglas de uso</h2>
+        </div>
+        <div class="callout success">
+          ✅ <strong>Sí:</strong> Usar Montserrat para todos los elementos de texto. Mantener la escala modular. Combinar
+          pesos para crear jerarquía. Usar letter-spacing negativo en títulos grandes.
+        </div>
+        <div class="callout danger" style="margin-top:10px;">
+          ❌ <strong>No:</strong> Mezclar otras fuentes sin justificación. Usar pesos no definidos (100, 200, 900).
+          Aplicar uppercase a párrafos de cuerpo. Usar tamaños fuera de la escala definida.
+        </div>
+      </div>
+
+    </div>
+    <footer class="footer">CoffMunnity · TFG DAW · Guía de Estilo · Tipografía</footer>
+  </main>
+
+</body>
+
+</html>
