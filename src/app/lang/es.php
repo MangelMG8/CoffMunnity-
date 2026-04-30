@@ -12,7 +12,9 @@ return [
         'show_pass' => 'Mostrar contraseña',
         'remember_me' => 'Recuérdame',
         'btn_submit' => 'Acceder',
-        'forgot_pass' => '¿Olvidaste la contraseña?'
+        'forgot_pass' => '¿Olvidaste la contraseña?',
+        'no_account' => '¿No tienes una cuenta?',
+        'register' => 'Regístrate'
     ]
 ];
 ?>
