@@ -57,32 +57,40 @@ El proyecto combina una comunidad social, gestión de reseñas y una experiencia
 
 | Tipo                  | Tecnología                                                                 |
 | --------------------- | -------------------------------------------------------------------------- |
-| **Frontend** | HTML5, CSS3 (Bootstrap 5), JavaScript (ES6)                                |
-| **Backend** | PHP 8.2 + Composer                                                         |
-| **Autenticación** | **Firebase Auth** (Integración con SDK de Google)                          |
-| **Base de datos** | MySQL 8.0                                                                  |
-| **Entorno / Hosting** | **Docker** & Docker Compose / **AWS (EC2)** |
-| **Videojuego** | **Godot Engine** (Implementación futura de minijuego interactivo)          |
-| **Documentación** | Markdown + GitHub Pages                                                    |
+| **Frontend**          | HTML5, CSS3 (Bootstrap 5), JavaScript (ES6)                                |
+| **Backend**           | PHP 8.2 + Composer (MVC Architecture)                                      |
+| **Autenticación**     | **Firebase Auth** (Manejo de identidad y seguridad)                        |
+| **Base de Datos**     | **PostgreSQL** (Alojado en **Supabase**)                                   |
+| **Infraestructura**   | **Docker** & Docker Compose (Entorno contenedorizado)                      |
+| **Seguridad**         | Variables de entorno con **DotEnv** (.env)                                 |
+| **Videojuego**        | **Godot Engine** (Implementación de minijuego interactivo)                 |
+| **Documentación**     | Markdown + GitHub Pages
 
 ---
 
-## 🗂 Estructura del proyecto
+## Estructura del proyecto
 
 ```text
-coffmunity/
-├── docker/               # Configuración de contenedores (PHP, MySQL, Nginx)
-├── docs/                 # Documentación técnica (Markdown) -> GitHub Pages
-├── game/                 # Proyecto de videojuego (Godot)
-├── src/                  # Código fuente de la aplicación
-│   ├── app/              # MVC: Controladores, Modelos y Lógica (Firebase SDK)
-│   ├── config/           # Configuración de DB y Firebase
-│   ├── public/           # Punto de entrada (index.php, Assets: CSS, JS)
-│   ├── tests/            # Tests automáticos (PHPUnit)
-│   └── views/            # Vistas y plantillas
-├── docker-compose.yml    # Orquestador de servicios
-├── .env                  # Variables de entorno (No incluido en Git)
-└── README.md             # Presentación del proyecto
+coffmunnity/
+├── docker/               # Configuración de contenedores (PHP-FPM, Nginx)
+├── docs/                 # Documentación técnica y guía de estilos -> GitHub Pages
+├── game/                 # Proyecto de videojuego (Godot Engine)
+├── src/                  # Código fuente principal de la aplicación
+│   ├── app/              # Lógica interna (Backend)
+│   │   ├── config/       # Conexión a base de datos y Firebase
+│   │   ├── controllers/  # Controladores (Arquitectura MVC)
+│   │   ├── includes/     # Componentes compartidos
+│   │   ├── lang/         # Ficheros de internacionalización (ES / EN)
+│   │   └── views/        # Plantillas y vistas HTML
+│   ├── public/           # Directorio raíz del servidor web (DocumentRoot)
+│   │   └── assets/       # Estilos CSS, Scripts JS, Imágenes y Multimedia
+│   └── tests/            # Tests automáticos
+├── .env                  # Variables de entorno secretas (Ignorado en Git)
+├── .env.example          # Plantilla pública de variables de entorno
+├── .gitignore            # Reglas de exclusión para el control de versiones
+├── docker-compose.yml    # Configuración de servicios Docker
+├── LICENSE               # Licencia de distribución del proyecto
+└── README.md             # Presentación y documentación principal           
 ```
 
 ---

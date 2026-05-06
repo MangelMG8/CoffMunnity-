@@ -19,23 +19,5 @@ services:
     container_name: coffmunnity-app
     volumes:
       - ./src:/var/www/html
-    depends_on: 
-      - db
-
-  db:
-    image: mysql:8.0
-    container_name: coffmunnity-db
-    restart: always
-    environment:
-      MYSQL_DATABASE: coffmunnity_db
-      MYSQL_ROOT_PASSWORD: root_password
-      MYSQL_USER: coffee_user
-      MYSQL_PASSWORD: coffee_password
-    ports:
-      - "3306:3306"
-    volumes:
-      - db_data:/var/lib/mysql
-      - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
-
-volumes:
-  db_data:
+    env_file:
+      - .env
