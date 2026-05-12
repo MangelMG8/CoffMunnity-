@@ -1,10 +1,10 @@
 <?php
 return [
-    'arrayGlobal' => [
+    'global' => [
         'app_name' => 'Coffmunnity',
         'version' => 'Actual Version - 1.0.0'
     ],
-    'arrayLogin' => [
+    'login' => [
         'page_title' => 'Login',
         'title' => 'Log In',
         'placeholder_user' => 'Username',

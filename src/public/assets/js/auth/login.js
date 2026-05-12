@@ -1,6 +1,10 @@
+import { signInWithEmailAndPassword, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+import { auth, provider } from "../config/firebase-config.js";
+
 document.addEventListener('DOMContentLoaded', () => {
     
-    const toggleBtn = document.querySelector('.login-field__eye');
+    // ---CONTRASEÑA LOGIN ---
+    const toggleBtn = document.querySelector('.login-field-eye');
     const passwordInput = document.getElementById('password');
     const eyeIcon = document.getElementById('eye-icon');
 
@@ -14,5 +18,69 @@ document.addEventListener('DOMContentLoaded', () => {
                 eyeIcon.textContent = '👁';
             }
         });
+    }
+
+    //  FIREBASE AUTH 
+    const loginForm = document.querySelector('.login-form');
+    const btnGoogle = document.getElementById('btn-login-google');
+    const emailInput = document.getElementById('email'); 
+
+    if (loginForm) {
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault(); 
+
+            const email = emailInput.value;
+            const password = passwordInput.value;
+
+            try {
+                const userCredential = await signInWithEmailAndPassword(auth, email, password);
+                console.log("¡Logueado exitosamente con Email!", userCredential.user.email);
+                
+                manejarLoginExitoso(userCredential.user);
+
+            } catch (error) {
+                console.error("Error en Email/Pass:", error.code, error.message);
+                alert("Credenciales incorrectas o usuario no encontrado.");
+            }
+        });
+    }
+
+    if (btnGoogle) {
+        btnGoogle.addEventListener('click', async () => {
+            try {
+                const result = await signInWithPopup(auth, provider);
+                console.log("¡Logueado exitosamente con Google!", result.user.displayName);
+                
+                manejarLoginExitoso(result.user);
+
+            } catch (error) {
+                console.error("Error en Google Auth:", error.code, error.message);
+                alert("Hubo un problema al iniciar sesión con Google.");
+            }
+        });
+    }
+
+    async function manejarLoginExitoso(user) {
+        try {
+            const response = await fetch('/auth_api.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ uid: user.uid })
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                window.location.href = "/profile.php";
+            } else {
+                alert("Error: No se pudo crear la sesión en el servidor.");
+                auth.signOut();
+            }
+        } catch (error) {
+            console.error("Error al contactar con PHP:", error);
+            alert("Error de conexión con el servidor.");
+        }
     }
 });
