@@ -1,7 +1,5 @@
 </main>
-  </div>
-
-  <nav class="bottom-nav">
+</div> <nav class="bottom-nav">
     <a href="/index.php" class="bottom-nav-item active">
       <i class="fa-solid fa-house"></i>
       <span>Inicio</span>
@@ -23,30 +21,24 @@
     </a>
   </nav>
 
-  <script>
-    const hamburgerBtn   = document.getElementById('hamburgerBtn');
-    const sidebar        = document.getElementById('sidebar');
-    const sidebarOverlay = document.getElementById('sidebarOverlay');
+  <div id="modalGeneric" class="modal-overlay">
+      <div class="modal-container">
+          <div class="modal-header">
+              <h2 id="genericTitle">Notificación</h2>
+              <button class="btn-close-modal" onclick="closeModal('modalGeneric')">&times;</button>
+          </div>
+          <div class="modal-body">
+              <p id="genericText">Este es un mensaje genérico.</p>
+          </div>
+      </div>
+  </div>
 
-    hamburgerBtn.addEventListener('click', () => {
-      sidebar.classList.toggle('open');
-      sidebarOverlay.classList.toggle('visible');
-      hamburgerBtn.classList.toggle('active');
-    });
+  <?php include __DIR__ . '/modals/cafe_info.php'; ?>
 
-    sidebarOverlay.addEventListener('click', () => {
-      sidebar.classList.remove('open');
-      sidebarOverlay.classList.remove('visible');
-      hamburgerBtn.classList.remove('active');
-    });
 
-    document.querySelectorAll('.filter-tag').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.filter-tag').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-      });
-    });
-  </script>
+  <script src="/assets/js/components/modals.js"></script>
+  
+  <script src="/assets/js/utils/layout.js"></script>
 
 </body>
 </html>
