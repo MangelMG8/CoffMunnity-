@@ -46,34 +46,11 @@
   margin-bottom: 28px;
 }
 
-.login-brand-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: conic-gradient(
-    var(--color-caramel) 0%,
-    var(--color-roast)   40%,
-    var(--color-moss)    70%,
-    var(--color-caramel) 100%
-  );
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font);
-  font-weight: 800;
-  font-size: 20px;
-  color: var(--color-cream);
-  flex-shrink: 0;
-  box-shadow: 0 0 16px rgba(196, 129, 59, 0.45);
-}
-
-.login-brand-name {
-  font-family: var(--font);
-  font-weight: 700;
-  font-size: 20px;
-  letter-spacing: 0.06em;
-  color: var(--color-cream);
-  text-transform: uppercase;
+.login-brand__img {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+  display: block;
 }
 
 .login-title {
@@ -311,16 +288,6 @@
 
   .login-form {
     max-width: 100%;
-  }
-
-  .login-brand-icon {
-    width: 48px;
-    height: 48px;
-    font-size: 22px;
-  }
-
-  .login-brand-name {
-    font-size: 22px;
   }
 
   .login-title {
