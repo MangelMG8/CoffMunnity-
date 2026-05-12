@@ -1,0 +1,60 @@
+.map-view-container {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - var(--topbar-h) - 2rem);
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.map-header {
+  background-color: var(--color-latte);
+  color: var(--color-espresso);
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+}
+
+.map-header h1 {
+  font-size: 1.5rem;
+  font-weight: 900;
+  margin-bottom: 0.25rem;
+}
+
+.map-header p {
+  font-size: 0.95rem;
+  color: var(--color-roast);
+  font-weight: 500;
+}
+
+#map {
+  flex-grow: 1;
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+  background-color: var(--color-steam);
+  border: 2px solid var(--color-caramel);
+  z-index: 1;
+}
+
+.leaflet-popup-content-wrapper {
+  background-color: var(--color-cream);
+  border-radius: 8px;
+}
+
+.leaflet-popup-tip {
+  background-color: var(--color-cream);
+}
+
+.cafe-info-window h3 {
+  color: var(--color-espresso);
+  font-family: var(--font);
+  font-size: 1.1rem;
+  margin: 0 0 4px 0;
+}
+
+.cafe-info-window p {
+  color: var(--color-roast);
+  font-family: var(--font);
+  font-size: 0.9rem;
+  margin: 0;
+}
