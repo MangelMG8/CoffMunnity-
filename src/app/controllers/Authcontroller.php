@@ -6,19 +6,40 @@ class AuthController extends Controller
 
     public function showLogin()
     {
-        if (isset($_SESSION['user_id'])) {
-            header('Location: /index.php');
-            exit();
+        // Si cuenta con sesión se inicia
+        $this->requireGuest();
+
+        // Sin sesión pero con cookie se inicia
+        if (isset($_COOKIE['remember_me'])) {
+            require_once __DIR__ . '/../config/database.php';
+            $token = $_COOKIE['remember_me'];
+
+            try {
+                $stmt = $pdo->prepare("SELECT id, username, role FROM users WHERE remember_token = :token");
+                $stmt->execute(['token' => $token]);
+                $usuario = $stmt->fetch();
+
+                if ($usuario) {
+                    $_SESSION['user_id'] = $usuario['id'];
+                    $_SESSION['username'] = $usuario['username'];
+                    $_SESSION['role'] = $usuario['role'];
+
+                    header('Location: /index');
+                    exit();
+                }
+            } catch (PDOException $e) {
+                error_log("Error al comprobar la cookie: " . $e->getMessage());
+            }
         }
+
+        // Sin cookie ni sesión se muestar el login
         require_once __DIR__ . '/../views/auth/view_login.php';
     }
 
     public function showRegister()
     {
-        if (isset($_SESSION['user_id'])) {
-            header('Location: /index');
-            exit();
-        }
+        $this->requireGuest();
+
         require_once __DIR__ . '/../views/auth/view_register.php';
     }
 
@@ -67,6 +88,7 @@ class AuthController extends Controller
         // Leemos el JSON que nos manda el fetch de JS
         $data = json_decode(file_get_contents('php://input'), true);
         $uid = $data['uid'] ?? null;
+        $remember  = $data['remember'] ?? false;
 
         if ($uid) {
             // Traemos la conexión a la base de datos (Supabase)
@@ -79,12 +101,20 @@ class AuthController extends Controller
                 $usuario = $stmt->fetch();
 
                 if ($usuario) {
-                    // ¡Creamos la sesión de servidor!
                     $_SESSION['user_id'] = $uid;
                     $_SESSION['username'] = $usuario['username'];
-                    $_SESSION['role'] = $usuario['role']; // 'admin' o 'user'
+                    $_SESSION['role'] = $usuario['role'];
 
-                    // Devolvemos respuesta a JS de que todo fue bien
+                    if ($remember) {
+                        // Generamos un token aleatorio seguro
+                        $token = bin2hex(random_bytes(32));
+
+                        // Y lo guardamos en la table de users
+                        $upd = $pdo->prepare("UPDATE users SET remember_token = :token WHERE id = :id");
+                        $upd->execute(['token' => $token, 'id' => $uid]);
+
+                        setcookie('remember_me', $token, time() + 2592000, "/", "", false, true);
+                    }
                     echo json_encode(['success' => true]);
                     exit;
                 }
@@ -112,7 +142,7 @@ class AuthController extends Controller
             setcookie('remember_token', '', time() - 3600, '/');
         }
 
-        header('Location: /login.php');
+        header('Location: /login');
         exit();
     }
 }

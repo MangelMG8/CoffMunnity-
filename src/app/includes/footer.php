@@ -37,7 +37,7 @@
 
 
   <script src="/assets/js/components/modals.js"></script>
-  
+  <script type="module" src="/assets/js/auth/logout.js"></script>
   <script src="/assets/js/utils/layout.js"></script>
 
 </body>

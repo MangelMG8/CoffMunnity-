@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../app/includes/header.php';
+require_once __DIR__ . '/../../includes/header.php';
 ?>
 
 <link rel="stylesheet" href="assets/css/profile.css" />
@@ -118,9 +118,9 @@ require_once __DIR__ . '/../app/includes/header.php';
 
     </div>
   </section>
-
+<button id="btn-logout" style="padding: 10px; background: red; color: white; cursor: pointer;">Cerrar Sesión (Test)</button>
 </main>
 
-<?php require_once __DIR__ . '/../app/includes/footer.php'; ?>
+<?php require_once __DIR__ . '/../../includes/footer.php'; ?>
 
-<script src="assets/js/utils/profile.js"></script>
+<script src="assets/js/pages/profile.js"></script>
