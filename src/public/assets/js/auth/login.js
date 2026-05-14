@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const data = await response.json();
             if (data.success) {
-                window.location.href = "/profile";
+                window.location.href = "/index";
             } else {
                 alert("Error: No se pudo crear la sesión.");
                 auth.signOut();
