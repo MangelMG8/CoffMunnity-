@@ -1,26 +1,34 @@
 <?php
 class Controller {
+    
     public function __construct() {
+        // Arrancamos la sesión siempre que se instancie un controlador
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
     }
 
     /**
-     * Método para obligar a que el usuario esté logueado.
-     * Si no lo está, lo manda al login.
+     * Redirección al Login
+     * Si el usuario NO esta logueado
      */
     protected function requireAuth() {
         if (!isset($_SESSION['user_id'])) {
-            header('Location: /login.php');
+            header('Location: /login');
             exit();
         }
     }
 
     /**
-     * Método útil para saber si el usuario es Admin desde cualquier sitio.
+     * Redirección al index
+     * Si el usuario esta logueado
      */
-    protected function isAdmin() {
-        return isset($_SESSION['role']) && $_SESSION['role'] === 'admin';
+    protected function requireGuest() {
+        if (isset($_SESSION['user_id'])) {
+            header('Location: /index');
+            exit();
+        }
     }
 }
+
+?>
