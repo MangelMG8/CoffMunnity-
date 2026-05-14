@@ -1,20 +1,69 @@
-<?php 
+<?php
 require_once __DIR__ . '/Controller.php';
 
-class AuthController extends Controller {
-    
-    public function showLogin() {
+class AuthController extends Controller
+{
+
+    public function showLogin()
+    {
         if (isset($_SESSION['user_id'])) {
-            header('Location: /profile.php');
+            header('Location: /index.php');
             exit();
         }
         require_once __DIR__ . '/../views/auth/view_login.php';
     }
 
+    public function showRegister()
+    {
+        if (isset($_SESSION['user_id'])) {
+            header('Location: /index');
+            exit();
+        }
+        require_once __DIR__ . '/../views/auth/view_register.php';
+    }
+
+    // Insertamos desde firebase el usuario a supabase
+    public function registerUserFromFirebase()
+    {
+        $data = json_decode(file_get_contents('php://input'), true);
+        $uid = $data['uid'] ?? null;
+        $username = $data['username'] ?? null;
+        $email = $data['email'] ?? null;
+
+        if ($uid && $username && $email) {
+            require_once __DIR__ . '/../config/database.php';
+
+            try {
+                // Insertamos el usuario en Supabase (PostgreSQL)
+                $stmt = $pdo->prepare("INSERT INTO users (id, username, email, role) VALUES (:id, :username, :email, 'user')");
+                $stmt->execute([
+                    'id' => $uid,
+                    'username' => $username,
+                    'email' => $email
+                ]);
+
+                // Iniciamos la sesión
+                $_SESSION['user_id'] = $uid;
+                $_SESSION['username'] = $username;
+                $_SESSION['role'] = 'user';
+
+                echo json_encode(['success' => true]);
+                exit;
+            } catch (PDOException $e) {
+                error_log("Error BBDD: " . $e->getMessage());
+                echo json_encode(['success' => false, 'message' => 'Error de BBDD']);
+                exit;
+            }
+        }
+
+        echo json_encode(['success' => false, 'message' => 'Faltan datos en el servidor']);
+    }
+
     /**
      * Recibe el UID de Firebase vía fetch(JS), comprueba Supabase y crea la sesión PHP
      */
-    public function setSessionFromFirebase() {
+    public function setSessionFromFirebase()
+    {
         // Leemos el JSON que nos manda el fetch de JS
         $data = json_decode(file_get_contents('php://input'), true);
         $uid = $data['uid'] ?? null;
@@ -44,26 +93,26 @@ class AuthController extends Controller {
                 error_log("Error en BBDD: " . $e->getMessage());
             }
         }
-        
+
         // Si no hay UID o no existe el usuario, devolvemos false
         echo json_encode(['success' => false]);
     }
-    
-    public function logout() {
+
+    public function logout()
+    {
         // Aseguramos que la sesión está arrancada para poder destruirla
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
-        
+
         session_destroy();
-        
+
         // Borrar cookie de recuérdame si existe
         if (isset($_COOKIE['remember_token'])) {
             setcookie('remember_token', '', time() - 3600, '/');
         }
-        
+
         header('Location: /login.php');
         exit();
     }
 }
-?>

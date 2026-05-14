@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function manejarLoginExitoso(user) {
         try {
-            const response = await fetch('/auth_api.php', {
+            const response = await fetch('/api/auth_api.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
