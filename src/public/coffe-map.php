@@ -1,6 +1,6 @@
 <?php
   $pageTitle  = 'Mapa de Cafeterías ☕ | CoffMunnity';
-  $activePage = 'coffee-map'; 
+  $activePage = 'map'; 
   $extraCss   = '/assets/css/coffee-map.css'; 
 
   require_once '../app/includes/header.php'; 
@@ -11,7 +11,7 @@
 <div class="map-view-container">
   <div class="map-header">
     <h1>Encuentra tu café ideal</h1>
-    <p>Explora las cafeterías más cercanas usando datos libres.</p>
+    <p>Explora las cafeterías que se encuentran por tu zona</p>
   </div>
   
   <div id="map"></div>

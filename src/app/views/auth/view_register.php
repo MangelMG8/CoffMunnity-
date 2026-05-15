@@ -21,7 +21,8 @@ $global = $lang['global'];
 
         <aside class="reg-brand">
             <a href="index.php" class="reg-brand__logo">
-                <img src="assets/img/logo.png" alt="<?= $global['app_name'] ?>" class="reg-brand__img" />
+                <img src="assets/img/logo.svg" alt="<?= htmlspecialchars($global['app_name']) ?>" class="reg-brand__img" />
+                <span class="reg-brand__name"><?= htmlspecialchars($global['app_name']) ?></span>
             </a>
 
             <div class="reg-brand__copy">

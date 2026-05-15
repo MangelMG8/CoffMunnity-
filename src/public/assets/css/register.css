@@ -34,6 +34,16 @@
     width: auto;
     object-fit: contain;
     display: block;
+    filter: brightness(0) invert(1) !important;
+    margin-bottom: 8px;
+}
+
+.reg-brand__name {
+    color: var(--color-cream);
+    font-family: var(--font);
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
 }
 
 .reg-brand__copy {
