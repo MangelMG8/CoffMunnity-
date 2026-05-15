@@ -21,7 +21,7 @@ function isActive(string $page, string $current): string
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <link rel="stylesheet" href="/assets/css/css.css">
   <link rel="stylesheet" href="/assets/css/index.css">
-  <link rel="stylesheet" href="/assets/css/modals.css">
+  <link rel="stylesheet" href="/assets/css/modals/modals.css">
   <?php if ($extraCss): ?>
     <link rel="stylesheet" href="<?= htmlspecialchars($extraCss) ?>">
   <?php endif; ?>

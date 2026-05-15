@@ -14,6 +14,8 @@ $globalLang = $lang['global'];
     <title><?= $globalLang['app_name'] ?> — <?= $loginLang['page_title'] ?></title>
     <link rel="stylesheet" href="/assets/css/css.css" />
     <link rel="stylesheet" href="/assets/css/login.css" />
+    <link rel="stylesheet" href="/assets/css/modals.css" />
+    <link rel="stylesheet" href="/assets/css/modals/generic-modal.css" />
 </head>
 
 <body class="login-body">
@@ -93,6 +95,16 @@ $globalLang = $lang['global'];
         <p class="login-version"><?= $globalLang['version'] ?></p>
 
     </aside>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <script src="/assets/js/components/modals.js"></script>
+
+    <?php require_once __DIR__ . '/../../includes/modals/generic_modal.php'; ?>
+
+    <script>
+        window.lang = <?= json_encode($lang['js_messages'] ?? []) ?>;
+    </script>
 
     <script type="module" src="/assets/js/auth/login.js"></script>
 </body>

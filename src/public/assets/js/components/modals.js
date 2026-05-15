@@ -11,24 +11,29 @@ $(document).ready(function() {
     });
 });
 
-function openModal(id) {
-    $('#' + id).css('display', 'flex');
-}
+/**
+ * FUNCIONES GLOBALES DE CONTROL
+ */
+window.openModal = function(id) {
+    $('#' + id).css('display', 'flex').hide().fadeIn(200);
+};
 
-function closeModal(id) {
-    $('#' + id).css('display', 'none');
+window.closeModal = function(id) {
+    $('#' + id).fadeOut(200, function() {
+        $(this).css('display', 'none');
+    });
     
     if (id === 'modalCafe') {
         $('#masDatosContent').hide();
         $('#datosChevron i').removeClass('fa-chevron-up').addClass('fa-chevron-down');
     }
-}
+};
 
 window.onclick = function(event) {
     if (event.target.classList.contains('modal-overlay')) {
-        closeModal(event.target.id);
+        window.closeModal(event.target.id);
     }
-}
+};
 
 function showCafeModal(data) {
     $('#modalCafeName').text(data.nombre);
@@ -93,14 +98,27 @@ function showCafeModal(data) {
         $('.mas-datos-wrapper').hide();
     }
 
-    openModal('modalCafe');
+    window.openModal('modalCafe');
 }
 
 /**
- * Función para el modal genérico
+ * MODAL GENÉRICO PARA ALERTAS Y ERRORES
+ * @param {string} titulo - El encabezado del modal
+ * @param {string} texto - El cuerpo del mensaje
+ * @param {string} tipo - 'error', 'success', 'warning', 'info'
  */
-function showGenericModal(titulo, texto) {
-    $('#genericTitle').text(titulo);
+window.showGenericModal = function(titulo, texto, tipo = 'info') {
+    const colores = {
+        'error': 'var(--color-error)',
+        'success': 'var(--color-success)',
+        'warning': 'var(--color-warning)',
+        'info': 'var(--color-info)'
+    };
+
+    const colorElegido = colores[tipo] || 'var(--color-espresso)';
+
+    $('#genericTitle').text(titulo).css('color', colorElegido);
     $('#genericText').text(texto);
-    openModal('modalGeneric');
-}
+    
+    window.openModal('modalGeneric');
+};

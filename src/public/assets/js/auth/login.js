@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             } catch (error) {
                 console.error("Error en Email/Pass:", error.code, error.message);
-                alert("Credenciales incorrectas o usuario no encontrado.");
+                window.showGenericModal(window.lang.login_error_title, window.lang.login_error_text, "error");
             }
         });
     }
@@ -55,12 +55,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             } catch (error) {
                 console.error("Error en Google Auth:", error.code, error.message);
-                alert("Hubo un problema al iniciar sesión con Google.");
+                window.showGenericModal(window.lang.google_error_title, window.lang.google_error_text, "error");
             }
         });
     }
-
-
 
     const rememberInput = document.getElementById('remember');
 
@@ -81,11 +79,12 @@ document.addEventListener('DOMContentLoaded', () => {
             if (data.success) {
                 window.location.href = "/index";
             } else {
-                alert("Error: No se pudo crear la sesión.");
+                window.showGenericModal(window.lang.session_error_title, window.lang.session_error_text, "error");
                 auth.signOut();
             }
         } catch (error) {
             console.error("Error al contactar con PHP:", error);
+            window.showGenericModal(window.lang.server_error_title, window.lang.server_error_text, "error");
         }
     }
 });
