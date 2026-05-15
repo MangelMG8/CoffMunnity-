@@ -259,6 +259,21 @@
   letter-spacing: 0.06em;
 }
 
+.brand-logo {
+  height: 36px;
+  margin-bottom: 8px;
+  width: auto;
+  filter: brightness(0) invert(1); 
+}
+
+.brand-name {
+  color: var(--color-cream);
+  font-family: var(--font);
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
 @media (min-width: 600px) {
   .login-media {
     right: 340px;
