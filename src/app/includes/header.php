@@ -1,7 +1,31 @@
 <?php
-$pageTitle  = $pageTitle  ?? 'CoffMunnity ☕';
+if (session_status() === PHP_SESSION_NONE) {
+  session_start();
+}
+
+$lang = require_once __DIR__ . '/../lang/es.php';
+$pageTitle  = $pageTitle  ?? 'CoffMunnity';
 $activePage = $activePage ?? 'index';
 $extraCss   = $extraCss   ?? null;
+
+$sessionUser = $_SESSION['username'] ?? 'usuario';
+$sessionAvatar = '/assets/img/user.png';
+
+if (isset($_SESSION['user_id'])) {
+  try {
+    require_once __DIR__ . '/../config/database.php';
+
+    $stmt = $pdo->prepare("SELECT profile_pic FROM users WHERE id = :id");
+    $stmt->execute(['id' => $_SESSION['user_id']]);
+    $userRow = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($userRow && !empty($userRow['profile_pic'])) {
+      $sessionAvatar = $userRow['profile_pic'];
+    }
+  } catch (PDOException $e) {
+    error_log("Error al cargar la foto de perfil en el Header: " . $e->getMessage());
+  }
+}
 
 function isActive(string $page, string $current): string
 {
@@ -15,6 +39,7 @@ function isActive(string $page, string $current): string
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?= htmlspecialchars($pageTitle) ?></title>
+  <link rel="icon" href="/assets/img/logo.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -22,6 +47,7 @@ function isActive(string $page, string $current): string
   <link rel="stylesheet" href="/assets/css/css.css">
   <link rel="stylesheet" href="/assets/css/index.css">
   <link rel="stylesheet" href="/assets/css/modals/modals.css">
+  <link rel="stylesheet" href="/assets/css/modals/generic-modal.css" />
   <?php if ($extraCss): ?>
     <link rel="stylesheet" href="<?= htmlspecialchars($extraCss) ?>">
   <?php endif; ?>
@@ -37,21 +63,26 @@ function isActive(string $page, string $current): string
         <span></span>
       </button>
       <a href="/index.php" class="brand">
-        Coffe Communnity <span class="brand-icon">☕</span>
+        <span><?= htmlspecialchars($lang['global']['app_name'] ?? 'CoffMunnity') ?></span>
+        <img src="/assets/img/logo.svg" alt="Logo" class="brand-logo" />
       </a>
     </div>
+
     <div class="topbar-right">
-      <a href="/perfil.php" class="avatar-wrap" aria-label="Ver perfil">
-        <img src="/assets/img/user.png" alt="Avatar usuario" class="avatar-img">
+      <a href="/profile" class="topbar-profile-link" title="Ver mi perfil">
+        <span class="topbar-username"><?= htmlspecialchars($sessionUser) ?></span>
+        <div class="topbar-avatar-wrapper">
+          <img src="<?= htmlspecialchars($sessionAvatar) ?>" alt="Mi Perfil" class="topbar-avatar-img">
+        </div>
       </a>
     </div>
   </header>
 
   <div class="layout">
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
     <aside class="sidebar" id="sidebar">
       <nav class="sidebar-nav">
-
         <a href="/index.php" class="sidebar-link<?= isActive('index', $activePage) ?>">
           <span class="sidebar-link-inner">
             <i class="fa-solid fa-house sidebar-link-icon"></i>
@@ -75,7 +106,6 @@ function isActive(string $page, string $current): string
           </span>
           <span class="sidebar-link-hover-bar"></span>
         </a>
-
       </nav>
 
       <div class="sidebar-bottom">
@@ -86,7 +116,5 @@ function isActive(string $page, string $current): string
         </a>
       </div>
     </aside>
-
-    <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
     <main class="main">

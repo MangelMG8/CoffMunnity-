@@ -136,20 +136,6 @@ $global = $lang['global'];
         </main>
     </div>
 
-    <script>
-        function togglePass(inputId, iconId) {
-            const input = document.getElementById(inputId);
-            const icon = document.getElementById(iconId);
-            if (input.type === 'password') {
-                input.type = 'text';
-                icon.textContent = '🙈';
-            } else {
-                input.type = 'password';
-                icon.textContent = '👁';
-            }
-        }
-    </script>
-
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="/assets/js/components/modals.js"></script>
     <?php require_once __DIR__ . '/../../includes/modals/generic_modal.php'; ?>

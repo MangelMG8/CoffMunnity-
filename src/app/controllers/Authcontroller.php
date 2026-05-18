@@ -104,6 +104,7 @@ class AuthController extends Controller
                     $_SESSION['user_id'] = $uid;
                     $_SESSION['username'] = $usuario['username'];
                     $_SESSION['role'] = $usuario['role'];
+                    $_SESSION['profile_pic'] = !empty($userRow['profile_pic']) ? $userRow['profile_pic'] : '/assets/img/user.png';
 
                     if ($remember) {
                         // Generamos un token aleatorio seguro

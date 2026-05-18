@@ -84,3 +84,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+window.togglePass = function(inputId, iconId) {
+    const input = document.getElementById(inputId);
+    const icon = document.getElementById(iconId);
+    
+    if (input && icon) {
+        if (input.type === 'password') {
+            input.type = 'text';
+            icon.textContent = '🙈';
+        } else {
+            input.type = 'password';
+            icon.textContent = '👁';
+        }
+    }
+};
