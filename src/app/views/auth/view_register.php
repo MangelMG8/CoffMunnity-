@@ -13,6 +13,8 @@ $global = $lang['global'];
     <title><?= $global['app_name'] ?> — <?= $reg['page-title'] ?></title>
     <link rel="stylesheet" href="assets/css/css.css" />
     <link rel="stylesheet" href="assets/css/register.css" />
+    <link rel="stylesheet" href="/assets/css/modals/modals.css" />
+    <link rel="stylesheet" href="/assets/css/modals/generic-modal.css" />
 </head>
 
 <body class="reg-body">
@@ -148,8 +150,15 @@ $global = $lang['global'];
         }
     </script>
 
-    <script type="module" src="/assets/js/auth/register.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="/assets/js/components/modals.js"></script>
+    <?php require_once __DIR__ . '/../../includes/modals/generic_modal.php'; ?>
 
+    <script>
+        window.lang = <?= json_encode($lang['js_messages'] ?? []) ?>;
+    </script>
+
+    <script type="module" src="/assets/js/auth/register.js"></script>
 </body>
 
 </html>

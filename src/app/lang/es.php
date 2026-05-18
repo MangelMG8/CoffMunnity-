@@ -48,6 +48,15 @@ return [
         'server_error_title' => 'Error de conexión',
         'server_error_text' => 'No se pudo conectar con el servidor. Por favor, inténtalo de nuevo.',
         'session_error_title' => '¡Vaya!',
-        'session_error_text' => 'No se pudo crear la sesión en el servidor.'
+        'session_error_text' => 'No se pudo crear la sesión en el servidor.',
+        'reg_error_title' => 'Error de validación',
+        'reg_success_title' => '¡Registro completado!',
+        'reg_success_text' => 'Tu cuenta ha sido creada con éxito. Redirigiendo...',
+        'val_name' => 'El nombre de usuario debe tener entre 3 y 20 caracteres (solo letras, números y guiones bajos).',
+        'val_email' => 'Por favor, introduce un correo electrónico válido.',
+        'val_pass' => 'La contraseña debe tener al menos 6 caracteres, incluyendo al menos una letra y un número.',
+        'val_pass_match' => 'Las contraseñas no coinciden.',
+        'db_error' => 'Error al guardar en la base de datos: ',
+        'firebase_error' => 'Hubo un error al registrarse. El correo podría estar ya en uso o ser inválido.'
     ]
 ];

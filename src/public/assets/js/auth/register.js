@@ -8,13 +8,42 @@ document.addEventListener('DOMContentLoaded', () => {
         registerForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            const username = document.getElementById('username').value;
-            const email = document.getElementById('email').value;
+            const username = document.getElementById('username').value.trim();
+            const email = document.getElementById('email').value.trim();
             const password = document.getElementById('password').value;
             const passwordConfirm = document.getElementById('password2').value;
 
+            // EXPRESIONES REGULARES (REGEX)
+            // ==========================================
+            // Usuario entre 3 y 20 caracteres
+            const regexUser = /^[a-zA-Z0-9_]{3,20}$/;
+            
+            // Estructura de correo
+            const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            
+            // Contraseña mínimo 6 carácteres y al menos 1 letra y 1 número
+            const regexPass = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*?&._-]{6,}$/;
+
+
+            // VALIDACIONES
+            // ==========================================
+            if (!regexUser.test(username)) {
+                window.showGenericModal(window.lang.reg_error_title, window.lang.val_name, "warning");
+                return;
+            }
+
+            if (!regexEmail.test(email)) {
+                window.showGenericModal(window.lang.reg_error_title, window.lang.val_email, "warning");
+                return;
+            }
+
+            if (!regexPass.test(password)) {
+                window.showGenericModal(window.lang.reg_error_title, window.lang.val_pass, "warning");
+                return;
+            }
+
             if (password !== passwordConfirm) {
-                alert("Las contraseñas no coinciden.");
+                window.showGenericModal(window.lang.reg_error_title, window.lang.val_pass_match, "warning");
                 return;
             }
 
@@ -37,16 +66,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 const data = await response.json();
 
                 if (data.success) {
-                    alert("¡Registro completado con éxito!");
-                    window.location.href = "/index.php";
+                    window.showGenericModal(window.lang.reg_success_title, window.lang.reg_success_text, "success");
+                    
+                    setTimeout(() => {
+                        window.location.href = "/index";
+                    }, 2500);
+
                 } else {
-                    alert("Error al guardar en la base de datos: " + data.message);
+                    window.showGenericModal("Error", window.lang.db_error + data.message, "error");
                     await user.delete(); 
                 }
 
             } catch (error) {
                 console.error("Error en el registro:", error.code, error.message);
-                alert("Hubo un error al registrarse. Revisa tus datos.");
+                window.showGenericModal("Error de Firebase", window.lang.firebase_error, "error");
             }
         });
     }
