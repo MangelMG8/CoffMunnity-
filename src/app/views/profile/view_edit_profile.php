@@ -7,12 +7,12 @@ require_once __DIR__ . '/../../includes/header.php';
 $editLang = $lang['edit_profile'];
 $pageTitle  = $editLang['page_title'];
 
-$username   = $userData['username'] ?? '';
-$email      = $userData['email'] ?? '';
-$bio        = $userData['bio'] ?? '';
+$username = $userData['username'] ?? '';
+$email = $userData['email'] ?? '';
+$bio = $userData['bio'] ?? '';
 $firstName  = $userData['first_name'] ?? '';
-$lastName   = $userData['last_name'] ?? '';
-$birthDate  = $userData['birth_date'] ?? '';
+$lastName = $userData['last_name'] ?? '';
+$birthDate = $userData['birth_date'] ?? '';
 $profilePic = $userData['profile_pic'] ?? '/assets/img/user.png';
 ?>
 
