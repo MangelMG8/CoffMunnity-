@@ -2,7 +2,7 @@
 return [
     'global' => [
         'app_name' => 'Coffmunnity',
-        'version' => 'Actual Version - 1.0.0'
+        'version' => 'Current Version - 1.0.0'
     ],
     'login' => [
         'page_title' => 'Login',
@@ -13,6 +13,90 @@ return [
         'remember_me' => 'Remember me',
         'btn_submit' => 'Access',
         'forgot_pass' => 'Forgot your password?'
+    ],
+    'register' => [
+        'page-title' => 'Create account',
+        'headline' => 'Your coffee community awaits',
+        'sub' => 'Share recipes, reviews, and stories with thousands of specialty coffee enthusiasts.',
+        'title' => 'Create account',
+        'pills' => [
+            '☕ Recipes',
+            '⭐ Reviews',
+            '📖 Stories',
+            '📝 Articles'
+        ],
+        'placeholder-name' => 'Username',
+        'placeholder-email' => 'Email address',
+        'placeholder-pass' => 'Password',
+        'placeholder-pass2' => 'Repeat password',
+        'show-pass' => 'Show password',
+        'terms-pre' => 'I accept the',
+        'terms-link' => 'terms and conditions',
+        'btn-submit' => 'Create account',
+        'btn-google' => 'Sign up with Google',
+        'has-account' => 'Already have an account?',
+        'login' => 'Log in'
+    ],
+    'edit_profile' => [
+        'page_title' => 'Edit Profile — Coffmunnity ☕',
+        'community_member' => 'Community member',
+        'section_account' => 'Account information',
+        'label_username' => 'Username',
+        'hint_username' => 'This name is unique and cannot be changed.',
+        'label_email' => 'Email address',
+        'hint_email' => 'Your primary email is linked to your account.',
+        'section_public' => 'Public profile',
+        'label_bio' => 'Bio / About me',
+        'placeholder_bio' => 'Tell the community about your passion for coffee, your favorite methods...',
+        'hint_bio' => 'This will appear on your public profile for other users.',
+        'label_coffee' => 'Favorite coffee',
+        'hint_coffee' => 'This will be displayed on your community card.',
+        'coffee_options' => [
+            '' => 'Select your favorite coffee or method...',
+            'espresso' => 'Espresso',
+            'cappuccino' => 'Cappuccino',
+            'flat_white' => 'Flat White',
+            'v60' => 'V60 / Pour Over',
+            'chemex' => 'Chemex',
+            'aeropress' => 'Aeropress',
+            'moka' => 'Moka Pot / Italian Coffee Maker',
+            'cold_brew' => 'Cold Brew',
+            'latte' => 'Café Latte',
+            'latte_art' => 'Coffee with Latte Art'
+        ],
+        'section_personal' => 'Basic personal information',
+        'label_firstname' => 'First name',
+        'label_lastname' => 'Last name',
+        'label_birthdate' => 'Date of birth',
+        'hint_birthdate' => 'We use this to personalize your experience. It is not public.',
+        'section_danger' => 'Danger zone',
+        'danger_desc' => 'These actions are irreversible. Proceed with caution.',
+        'btn_delete' => 'Delete my account',
+        'btn_cancel' => 'Cancel',
+        'btn_save' => 'Save changes'
+    ],
+    'js_messages' => [
+        'login_error_title' => 'Login error',
+        'login_error_text'  => 'The email or password is incorrect. Please try again.',
+        'google_error_title' => 'Google error',
+        'google_error_text' => 'There was a problem signing in with your Google account.',
+        'server_error_title' => 'Connection error',
+        'server_error_text' => 'Could not connect to the server. Please try again.',
+        'session_error_title' => 'Oops!',
+        'session_error_text' => 'Could not create the session on the server.',
+        'reg_error_title' => 'Validation error',
+        'reg_success_title' => 'Registration completed!',
+        'reg_success_text' => 'Your account has been successfully created. Redirecting...',
+        'val_name' => 'The username must be between 3 and 20 characters (letters, numbers, and underscores only).',
+        'val_email' => 'Please enter a valid email address.',
+        'val_pass' => 'The password must be at least 6 characters long, including at least one letter and one number.',
+        'val_pass_match' => 'Passwords do not match.',
+        'db_error' => 'Error saving to database: ',
+        'firebase_error' => 'There was an error signing up. The email might already be in use or is invalid.',
+        'profile_success_title' => 'Profile updated!',
+        'profile_success_text'  => 'Your changes have been saved successfully.',
+        'profile_error_title'   => 'Error saving',
+        'profile_error_text'    => 'There was a problem connecting to the server. Please try again.',
     ]
 ];
 ?>

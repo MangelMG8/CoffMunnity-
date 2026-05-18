@@ -1,38 +1,74 @@
+// src/public/assets/js/pages/profile.js
+
 document.addEventListener('DOMContentLoaded', () => {
-  const tabs  = document.querySelectorAll('.profile-tab');
-  const cards = document.querySelectorAll('.pcard');
-  const grid  = document.getElementById('profile-grid');
 
-  let emptyMsg = document.querySelector('.profile-empty');
-  if (!emptyMsg) {
-    emptyMsg = document.createElement('p');
-    emptyMsg.className = 'profile-empty';
-    emptyMsg.textContent = 'No hay publicaciones en esta categoría todavía.';
-    grid.after(emptyMsg);
-  }
+    // ==========================================
+    // 1. LÓGICA DE FILTRADO DE PUBLICACIONES
+    // ==========================================
+    const filterBtns = document.querySelectorAll('.profile-filter-btn');
+    const cards = document.querySelectorAll('.pcard');
 
-  function filterCards(tab) {
-    const type = tab.dataset.tab;
-    let visible = 0;
+    if (filterBtns.length > 0) {
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
 
-    cards.forEach(card => {
-      const match = type === 'all' || card.dataset.type === type;
-      card.classList.toggle('pcard--hidden', !match);
-      if (match) visible++;
-    });
+                btn.classList.add('active');
+                const filter = btn.getAttribute('data-filter');
 
-    emptyMsg.classList.toggle('profile-empty--visible', visible === 0);
-  }
+                cards.forEach(card => {
+                    const cardType = card.getAttribute('data-type');
+                    
+                    if (filter === 'all' || cardType === filter) {
+                        card.style.display = 'block'; 
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    }
 
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => {
-        t.classList.remove('profile-tab--active');
-        t.setAttribute('aria-selected', 'false');s
-      });
-      tab.classList.add('profile-tab--active');
-      tab.setAttribute('aria-selected', 'true');
-      filterCards(tab);
-    });
-  });
+    // ==========================================
+    // 2. LÓGICA DE SEGUIR / DEJAR DE SEGUIR
+    // ==========================================
+    const btnFollow = document.getElementById('btn-follow');
+    const followersCount = document.getElementById('followers-count');
+
+    if (btnFollow) {
+        btnFollow.addEventListener('click', async () => {
+            btnFollow.disabled = true;
+            const targetId = btnFollow.getAttribute('data-userid');
+
+            try {
+                const response = await fetch('/api/follow.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ target_id: targetId })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    if (followersCount) {
+                        followersCount.innerText = data.newFollowers;
+                    }
+
+                    if (data.action === 'followed') {
+                        btnFollow.classList.add('following');
+                        btnFollow.innerHTML = '<i class="fa-solid fa-user-check"></i> Siguiendo';
+                    } else {
+                        btnFollow.classList.remove('following');
+                        btnFollow.innerHTML = '<i class="fa-solid fa-user-plus"></i> Seguir';
+                    }
+                } else {
+                    console.error("Error del servidor:", data.message);
+                }
+            } catch (err) {
+                console.error("Fallo en la petición AJAX:", err);
+            } finally {
+                btnFollow.disabled = false;
+            }
+        });
+    }
 });

@@ -124,6 +124,18 @@
   transform: translateY(0);
 }
 
+.profile-action-btn.following {
+    background: transparent;
+    color: var(--color-caramel);
+    border: 2px solid var(--color-caramel);
+    box-shadow: none;
+}
+.profile-action-btn.following:hover {
+    background: var(--color-error);
+    border-color: var(--color-error);
+    color: white;
+}
+
 .profile-action-btn--follow {
   background: transparent;
   color: var(--color-caramel);

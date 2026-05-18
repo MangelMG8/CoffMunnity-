@@ -10,9 +10,8 @@ class ProfileController extends Controller
         require_once __DIR__ . '/../config/database.php';
 
         $loggedInUserId = $_SESSION['user_id'];
-        $profileId = isset($_GET['id']) ? (int)$_GET['id'] : $loggedInUserId;
         
-        // Detectamos si es el perfil de que esta visitando
+        $profileId = isset($_GET['id']) ? $_GET['id'] : $loggedInUserId;
         $isOwnProfile = ($profileId === $loggedInUserId);
 
         try {
@@ -20,23 +19,37 @@ class ProfileController extends Controller
             $stmt->execute(['id' => $profileId]);
             $profileData = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            // Si no existe el perfil
             if (!$profileData) {
                 header("Location: /index.php");
                 exit;
             }
+
+            $stats = ['posts' => 0, 'followers' => 0, 'following' => 0];
+
+            $stmtPosts = $pdo->prepare("SELECT COUNT(*) FROM posts WHERE user_id = :id");
+            $stmtPosts->execute(['id' => $profileId]);
+            $stats['posts'] = $stmtPosts->fetchColumn();
+
+            $stmtFollowers = $pdo->prepare("SELECT COUNT(*) FROM follows WHERE following_id = :id");
+            $stmtFollowers->execute(['id' => $profileId]);
+            $stats['followers'] = $stmtFollowers->fetchColumn();
+
+            $stmtFollowing = $pdo->prepare("SELECT COUNT(*) FROM follows WHERE follower_id = :id");
+            $stmtFollowing->execute(['id' => $profileId]);
+            $stats['following'] = $stmtFollowing->fetchColumn();
+
+            $isFollowing = false;
+            if (!$isOwnProfile) {
+                $stmtCheck = $pdo->prepare("SELECT 1 FROM follows WHERE follower_id = :me AND following_id = :them");
+                $stmtCheck->execute(['me' => $loggedInUserId, 'them' => $profileId]);
+                $isFollowing = (bool)$stmtCheck->fetchColumn();
+            }
+
         } catch (PDOException $e) {
             error_log("Error al cargar perfil público: " . $e->getMessage());
             header("Location: /index.php");
             exit;
         }
-
-        // Estadísticas simuladas (Cambiar en el futuro)
-        $stats = [
-            'posts' => 14,
-            'followers' => 128,
-            'following' => 85
-        ];
 
         require_once __DIR__ . '/../views/profile/view_profile.php';
     }
