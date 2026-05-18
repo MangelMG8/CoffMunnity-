@@ -7,7 +7,6 @@
    lg:   min-width 1024px (escritorio)
    ============================================================ */
 
-
 /* ══ TOPBAR ══════════════════════════════════════════════════ */
 
 .topbar {
@@ -49,8 +48,6 @@
   display: block;
   filter: brightness(0) saturate(100%) invert(98%) sepia(14%) saturate(836%) hue-rotate(318deg) brightness(101%) contrast(97%);
 }
-
-
 
 .topbar-avatar {
     width: 38px;
@@ -126,21 +123,20 @@
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    object-fit: cover; /* Mantiene la proporción redonda perfecta */
+    object-fit: cover;
     border: 2px solid var(--color-caramel);
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
     background-color: var(--color-cream);
 }
 
-/* Efectos visuales de Hover */
 .topbar-profile-link:hover {
-    background-color: rgba(255, 255, 255, 0.05); /* Sutil fondo claro al pasar el ratón */
+    background-color: rgba(255, 255, 255, 0.05);
     transform: scale(1.03);
 }
 
 .topbar-profile-link:hover .topbar-username {
     opacity: 1;
-    color: var(--color-caramel); /* Cambia suavemente a color caramelo en hover */
+    color: var(--color-caramel);
 }
 
 .topbar-profile-link:active {
@@ -222,8 +218,6 @@
 
 
 /* ══ SIDEBAR ═════════════════════════════════════════════════ */
-
-/* Base móvil: sidebar oculto fuera de pantalla */
 .sidebar {
   position: fixed;
   top: var(--topbar-h);
@@ -246,10 +240,16 @@
 }
 
 .sidebar-nav {
-  padding: 10px 0;
   flex: 1;
+  padding: 24px 0 0 0;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
+}
+
+.sidebar-link--settings {
+  margin-top: auto;
+  border-top: 2px solid var(--color-latte);
 }
 
 .sidebar-link {
@@ -261,7 +261,7 @@
   color: var(--color-roast);
   text-decoration: none;
   transition: all 0.25s ease;
-  border-bottom: 1px solid var(--color-latte);
+  border-bottom: 2px solid var(--color-latte);
   border-left: 4px solid transparent;
 }
 
@@ -296,13 +296,13 @@
   transform: scale(1.15);
 }
 .sidebar-bottom {
-  padding: 24px 15px;
+  padding: 20px 28px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
   border-top: 2px solid var(--color-latte);
-  background: var(--color-chalk); 
+  background-color: var(--color-espresso); 
 }
 
 .sidebar-logout {
