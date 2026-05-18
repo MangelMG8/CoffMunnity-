@@ -106,6 +106,14 @@ function isActive(string $page, string $current): string
           </span>
           <span class="sidebar-link-hover-bar"></span>
         </a>
+
+        <a href="/settings.php" class="sidebar-link sidebar-link--settings <?= isActive('settings', $activePage) ?>">
+          <span class="sidebar-link-inner">
+            <i class="fa-solid fa-gear sidebar-link-icon"></i>
+            <span class="sidebar-link-text">Ajustes</span>
+          </span>
+          <span class="sidebar-link-hover-bar"></span>
+        </a>
       </nav>
 
       <div class="sidebar-bottom">

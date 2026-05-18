@@ -1,125 +1,131 @@
 <?php
+$pageTitle = '@' . htmlspecialchars($profileData['username']) . ' — Coffmunnity ☕';
+$activePage = 'perfil';
+$extraCss = '/assets/css/profile.css';
+
 require_once __DIR__ . '/../../includes/header.php';
+
+$profilePic = !empty($profileData['profile_pic']) ? $profileData['profile_pic'] : '/assets/img/user.png';
+$fullName = trim(($profileData['first_name'] ?? '') . ' ' . ($profileData['last_name'] ?? ''));
+$bio = $profileData['bio'] ?? '';
+$favoriteCoffee = $profileData['favorite_coffee'] ?? '';
+
+$coffeeLabels = [
+    'espresso' => 'Espresso', 'cappuccino' => 'Cappuccino', 'flat_white' => 'Flat White',
+    'v60' => 'V60 / Filtrado', 'chemex' => 'Chemex', 'aeropress' => 'Aeropress',
+    'moka' => 'Cafetera Italiana / Moka', 'cold_brew' => 'Cold Brew', 
+    'latte' => 'Café Latte', 'latte_art' => 'Café con Latte Art'
+];
+$coffeeDisplay = $coffeeLabels[$favoriteCoffee] ?? $favoriteCoffee;
 ?>
 
-<link rel="stylesheet" href="assets/css/profile.css" />
+<div class="profile-page">
 
-<main class="profile-page">
-
-  <!-- ── HERO BANNER ── -->
   <div class="profile-hero">
     <div class="profile-hero__banner"></div>
 
     <div class="profile-hero__identity">
       <div class="profile-avatar">
-        <img src="assets/img/user.png" alt="Avatar de MiguelCoffee" class="profile-avatar__img" />
-        <span class="profile-avatar__badge" title="Barista certificado">☕</span>
+        <img src="<?= htmlspecialchars($profilePic) ?>" alt="Avatar" class="profile-avatar__img" />
+        <span class="profile-avatar__badge">☕</span>
       </div>
 
       <div class="profile-hero__info">
-        <h1 class="profile-username">@miguelcoffee</h1>
-        <p class="profile-displayname">Miguel Ángel Ruiz</p>
+        <div class="profile-header-row">
+          <h1 class="profile-username">@<?= htmlspecialchars($profileData['username']) ?></h1>
+          
+          <div class="profile-actions">
+            <?php if ($isOwnProfile): ?>
+              <a href="/edit-profile" class="profile-action-btn edit-btn"><i class="fa-solid fa-user-gear"></i> Editar perfil</a>
+            <?php else: ?>
+              <button class="profile-action-btn follow-btn"><i class="fa-solid fa-user-plus"></i> Seguir</button>
+            <?php endif; ?>
+          </div>
+        </div>
+
+        <?php if ($fullName): ?>
+          <p class="profile-displayname"><?= htmlspecialchars($fullName) ?></p>
+        <?php endif; ?>
 
         <div class="profile-stats">
           <div class="profile-stats__item">
-            <span class="profile-stats__num">142</span>
+            <span class="profile-stats__num"><?= $stats['posts'] ?></span>
             <span class="profile-stats__label">publicaciones</span>
           </div>
           <div class="profile-stats__item">
-            <span class="profile-stats__num">3.8k</span>
+            <span class="profile-stats__num"><?= $stats['followers'] ?></span>
             <span class="profile-stats__label">seguidores</span>
           </div>
           <div class="profile-stats__item">
-            <span class="profile-stats__num">210</span>
+            <span class="profile-stats__num"><?= $stats['following'] ?></span>
             <span class="profile-stats__label">siguiendo</span>
           </div>
         </div>
       </div>
     </div>
-
-    <p class="profile-bio">
-      Barista de tercera ola en Elche. Obsesionado con los orígenes etíopes y los fermentados.
-      Comparto recetas, historias del sector y reseñas honestas de cada taza que me pasa por las manos. ☕🌍
-    </p>
+    
+    <?php if ($bio): ?>
+      <p class="profile-bio"><?= nl2br(htmlspecialchars($bio)) ?></p>
+    <?php else: ?>
+      <?php if ($isOwnProfile): ?>
+        <p class="profile-bio" style="color: var(--color-caramel); font-style: italic; opacity: 0.7;">Aún no has escrito una biografía. ¡Anímate a editar tu perfil!</p>
+      <?php endif; ?>
+    <?php endif; ?>
 
     <div class="profile-tags">
-      <span class="profile-tag">Especialidad</span>
-      <span class="profile-tag">Fermentados</span>
-      <span class="profile-tag">Etiopía</span>
-      <span class="profile-tag">Barismo</span>
+      <span class="profile-tag"><i class="fa-solid fa-calendar-days"></i> Miembro desde <?= date('M Y', strtotime($profileData['created_at'])) ?></span>
+      <?php if ($coffeeDisplay): ?>
+        <span class="profile-tag"><i class="fa-solid fa-mug-hot"></i> Favorito: <?= htmlspecialchars($coffeeDisplay) ?></span>
+      <?php endif; ?>
     </div>
   </div>
 
-  <!-- ── CONTENIDO: TABS + PUBLICACIONES ── -->
-  <section class="profile-content">
-
-    <nav class="profile-tabs" role="tablist" aria-label="Filtro de publicaciones">
-      <button class="profile-tab profile-tab--active" data-tab="all" role="tab" aria-selected="true">Todo</button>
-      <button class="profile-tab" data-tab="recipe" role="tab" aria-selected="false">Recetas</button>
-      <button class="profile-tab" data-tab="review" role="tab" aria-selected="false">Reseñas</button>
-      <button class="profile-tab" data-tab="story" role="tab" aria-selected="false">Historias</button>
-      <button class="profile-tab" data-tab="article" role="tab" aria-selected="false">Articulo</button>
-    </nav>
-
-    <div class="profile-grid" id="profile-grid">
-      <!-- RECETA -->
-      <article class="pcard pcard--recipe" data-type="recipe">
-        <div class="pcard__header">
-          <span class="pcard__pill pcard__pill--recipe">Receta</span>
-          <time class="pcard__date">19 mar 2025</time>
-        </div>
-        <h2 class="pcard__title">Cold brew concentrado en 12 horas</h2>
-        <p class="pcard__excerpt">Sin calor, sin prisa. El método que uso para conseguir un concentrado sedoso para toda la semana.</p>
-        <div class="pcard__meta">
-          <span class="pcard__meta-item">⏱ 12 h</span>
-          <span class="pcard__meta-item">❤️ 341</span>
-          <span class="pcard__meta-item">💬 54</span>
-        </div>
-        <a href="post.php?id=4" class="pcard__link">Leer receta →</a>
-      </article>
-
-      <!-- RESEÑA -->
-      <article class="pcard pcard--review" data-type="review">
-        <div class="pcard__header">
-          <span class="pcard__pill pcard__pill--review">Reseña</span>
-          <time class="pcard__date">10 mar 2025</time>
-        </div>
-        <h2 class="pcard__title">Nomad Coffee – Espresso de Temporada</h2>
-        <div class="pcard__stars" aria-label="5 de 5 estrellas">
-          <span class="pcard__star pcard__star--on">★</span>
-          <span class="pcard__star pcard__star--on">★</span>
-          <span class="pcard__star pcard__star--on">★</span>
-          <span class="pcard__star pcard__star--on">★</span>
-          <span class="pcard__star pcard__star--on">★</span>
-        </div>
-        <p class="pcard__excerpt">Barceloneses con alma de viajero. Este blend de temporada es redondo, sin aristas y adictivo.</p>
-        <div class="pcard__meta">
-          <span class="pcard__meta-item">❤️ 278</span>
-          <span class="pcard__meta-item">💬 33</span>
-        </div>
-        <a href="post.php?id=5" class="pcard__link">Leer reseña →</a>
-      </article>
-
-      <!-- HISTORIA -->
-      <article class="pcard pcard--story" data-type="story">
-        <div class="pcard__header">
-          <span class="pcard__pill pcard__pill--story">Historia</span>
-          <time class="pcard__date">1 mar 2025</time>
-        </div>
-        <h2 class="pcard__title">Mi primer campeonato de barismo: el fracaso que más me enseñó</h2>
-        <p class="pcard__excerpt">Quedé penúltimo. Y fue la mejor experiencia formativa de mi carrera. Te cuento qué salió mal y por qué no me arrepiento.</p>
-        <div class="pcard__meta">
-          <span class="pcard__meta-item">📖 4 min lectura</span>
-          <span class="pcard__meta-item">❤️ 423</span>
-          <span class="pcard__meta-item">💬 71</span>
-        </div>
-        <a href="post.php?id=6" class="pcard__link">Leer historia →</a>
-      </article>
-
+  <div class="profile-filter-wrap">
+    <div class="profile-filter-tabs">
+      <button class="profile-filter-btn active" data-filter="all">Todos</button>
+      <button class="profile-filter-btn" data-filter="review">Reseñas</button>
+      <button class="profile-filter-btn" data-filter="story">Historias</button>
     </div>
-  </section>
-</main>
+  </div>
+
+  <div class="profile-posts-grid">
+    <article class="pcard pcard--review" data-type="review">
+      <div class="pcard__header">
+        <span class="pcard__pill pcard__pill--review">Reseña</span>
+        <time class="pcard__date">Hace 2 días</time>
+      </div>
+      <h2 class="pcard__title">Nomad Coffee: Blend de temporada</h2>
+      <div class="pcard__rating">
+        <span class="pcard__star pcard__star--on">★</span>
+        <span class="pcard__star pcard__star--on">★</span>
+        <span class="pcard__star pcard__star--on">★</span>
+        <span class="pcard__star pcard__star--on">★</span>
+        <span class="pcard__star pcard__star--on">★</span>
+      </div>
+      <p class="pcard__excerpt">Barceloneses con alma de viajero. Este blend de temporada es redondo, sin aristas y adictivo.</p>
+      <div class="pcard__meta">
+        <span class="pcard__meta-item">❤️ 278</span>
+        <span class="pcard__meta-item">💬 33</span>
+      </div>
+      <a href="#" class="pcard__link">Leer reseña →</a>
+    </article>
+
+    <article class="pcard pcard--story" data-type="story">
+      <div class="pcard__header">
+        <span class="pcard__pill pcard__pill--story">Historia</span>
+        <time class="pcard__date">1 mar 2026</time>
+      </div>
+      <h2 class="pcard__title">Mi primer campeonato de barismo: el fracaso que más me enseñó</h2>
+      <p class="pcard__excerpt">Quedé penúltimo. Y fue la mejor experiencia formativa de mi carrera. Te cuento qué salió mal y por qué no me arrepiento.</p>
+      <div class="pcard__meta">
+        <span class="pcard__meta-item">📖 4 min lectura</span>
+        <span class="pcard__meta-item">❤️ 423</span>
+        <span class="pcard__meta-item">💬 89</span>
+      </div>
+      <a href="#" class="pcard__link">Leer historia →</a>
+    </article>
+  </div>
+
+</div>
 
 <?php require_once __DIR__ . '/../../includes/footer.php'; ?>
-
-<script src="assets/js/pages/profile.js"></script>
