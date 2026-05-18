@@ -3,3 +3,4 @@ docker/mysql/data/
 vendor/
 node_modules/
 .DS_Store
+src/public/assets/img/users/*

@@ -1,452 +1,337 @@
+/* ============================================================
+   edit-profile.css — Coffmunnity ☕
+   Rediseño Centrado y Blindaje contra Desajustes Visuales
+   ============================================================ */
+
 .ep-page {
+    background: var(--color-espresso);
     min-height: 100vh;
+    padding: 0;
+    margin: 0;
+    font-family: var(--font);
+}
+
+.ep-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 16px;
+    box-sizing: border-box;
+}
+
+/* ════════════════════════════════════════════════════════════
+   NUEVO ENCABEZADO CENTRADO (SUSTITUYE AL HERO ESQUINADO)
+   ════════════════════════════════════════════════════════════ */
+.ep-header-profile {
+    text-align: center;
+    margin-bottom: 30px;
     background: var(--color-cream);
-}
-
-/* ════ HERO ════ */
-.ep-hero {
-    position: relative;
-    background: linear-gradient(135deg, var(--color-caramel) 0%, #e0ab76 100%);
-    border: 1.5px solid rgba(44,24,16,0.1);
+    padding: 40px 30px;
     border-radius: 12px;
-    margin: 12px 16px 0;
-    overflow: hidden;
-    box-shadow: var(--shadow-sm);
-    transition: box-shadow 0.3s ease;
-    padding-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
 }
 
-.ep-hero:hover {
-    box-shadow: var(--shadow-lg);
-}
-
-.ep-hero__band {
-    height: 120px;
+.ep-avatar-centered {
     position: relative;
-    z-index: 2;
+    display: inline-block;
+    width: 140px;
+    height: 140px;
+    margin-bottom: 15px;
 }
 
-.ep-hero__identity {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 14px;
-    padding: 0 40px;
-    position: relative;
-    z-index: 2;
-}
-
-.ep-avatar {
-    position: relative;
-    flex-shrink: 0;
-    width: 104px;
-    height: 104px;
-    border-radius: 50%;
-    cursor: pointer;
-}
-
-.ep-avatar__img {
-    width: 104px;
-    height: 104px;
+.ep-avatar-centered__img {
+    width: 140px;
+    height: 140px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid var(--color-roast);
-    box-shadow: 0 4px 24px rgba(44,24,16,0.3);
-    display: block;
-    transition: filter 0.25s;
+    border: 4px solid var(--color-caramel);
+    box-shadow: 0 4px 12px rgba(44, 24, 16, 0.2);
 }
 
-.ep-avatar:hover .ep-avatar__img {
-    filter: brightness(0.65);
-}
-
-.ep-avatar__overlay {
+.ep-avatar-centered__upload-btn {
     position: absolute;
-    inset: 0;
+    bottom: 4px;
+    right: 4px;
+    background: var(--color-caramel);
+    color: white;
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 4px;
-    color: #fff;
-    font-family: var(--font);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    opacity: 0;
     cursor: pointer;
-    transition: opacity 0.25s;
+    transition: background 0.2s ease, transform 0.2s ease;
+    border: 3px solid var(--color-cream);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
-.ep-avatar__overlay i {
-    font-size: 20px;
+.ep-avatar-centered__upload-btn:hover {
+    background: var(--color-roast);
+    transform: scale(1.1);
 }
 
-.ep-avatar:hover .ep-avatar__overlay {
-    opacity: 1;
+.ep-avatar-centered__upload-btn i {
+    font-size: 16px;
 }
 
-.ep-avatar__file {
-    display: none;
+.ep-identity-centered__username {
+    margin: 0;
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--color-espresso);
+    letter-spacing: -1px;
 }
 
-.ep-hero__meta {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-    margin-bottom: 14px;
-}
-
-.ep-hero__username {
-    font-family: var(--font);
-    font-weight: 700;
-    font-size: 20px;
-    color: var(--color-cream);
-    letter-spacing: 0.02em;
-    text-shadow: 0 1px 6px rgba(0,0,0,0.55);
-}
-
-.ep-hero__role {
-    font-family: var(--font);
-    font-size: 11px;
+.ep-identity-centered__role {
+    margin: 6px 0 0 0;
+    font-size: 1rem;
+    color: var(--color-caramel);
     font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    border-radius: 20px;
-    padding: 3px 12px;
 }
 
-.ep-role--user {
-    background: rgba(250,243,232,0.15);
-    color: var(--color-cream);
-    border: 1px solid rgba(250,243,232,0.35);
+.ep-identity-centered__role i {
+    margin-right: 4px;
 }
 
-.ep-role--admin {
-    background: rgba(58,124,165,0.2);
-    color: #9dd3ef;
-    border: 1px solid rgba(58,124,165,0.4);
-}
-
-.ep-hero__since {
-    font-family: var(--font);
-    font-size: 11px;
-    color: var(--color-cream);
-    letter-spacing: 0.04em;
-    text-shadow: 0 1px 4px rgba(0,0,0,0.4);
-}
-
-.ep-body {
-    max-width: 680px;
-    margin: 0 auto;
-    padding: 28px 16px 80px;
-}
-
+/* ════════════════════════════════════════════════════════════
+   FORMULARIO PRINCIPAL Y MAQUETACIÓN
+   ════════════════════════════════════════════════════════════ */
 .ep-form {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
+    background: var(--color-cream);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+    box-sizing: border-box;
 }
 
 .ep-section {
-    padding: 28px 0 8px;
-    animation: ep-fadein 0.4s ease both;
-}
-
-.ep-section:nth-child(1) { animation-delay: 0.05s; }
-.ep-section:nth-child(3) { animation-delay: 0.1s; }
-.ep-section:nth-child(5) { animation-delay: 0.15s; }
-
-@keyframes ep-fadein {
-    from { opacity: 0; transform: translateY(10px); }
-    to   { opacity: 1; transform: translateY(0); }
+    margin-bottom: 10px;
 }
 
 .ep-section__title {
-    font-family: var(--font);
+    margin: 0 0 24px 0;
+    font-size: 1.35rem;
     font-weight: 700;
-    font-size: 13px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--color-roast);
+    color: var(--color-espresso);
     display: flex;
     align-items: center;
-    gap: 8px;
-    margin-bottom: 18px;
+    gap: 12px;
 }
 
 .ep-section__title i {
     color: var(--color-caramel);
-    font-size: 14px;
-}
-
-.ep-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 14px;
-}
-
-.ep-field {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
-
-.ep-label {
-    font-family: var(--font);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--color-roast);
-}
-
-.ep-input-wrap {
-    position: relative;
-}
-
-.ep-input-wrap--icon .ep-input {
-    padding-left: 40px;
-}
-
-.ep-input-icon {
-    position: absolute;
-    left: 13px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--color-steam);
-    font-size: 13px;
-    pointer-events: none;
-    transition: color 0.2s;
-}
-
-.ep-input-wrap:focus-within .ep-input-icon {
-    color: var(--color-caramel);
-}
-
-.ep-input {
-    width: 100%;
-    padding: 12px 14px;
-    background: #fff;
-    border: 1.5px solid rgba(107,58,42,0.18);
-    border-radius: 8px;
-    font-family: var(--font);
-    font-size: 14px;
-    color: var(--color-espresso);
-    outline: none;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    box-shadow: var(--shadow-sm);
-    -webkit-appearance: none;
-}
-
-/* Propiedades exclusivas para el textarea (Biografía) */
-textarea.ep-input {
-    resize: vertical;
-    min-height: 100px;
-    line-height: 1.5;
-}
-
-.ep-input::placeholder {
-    color: var(--color-steam);
-}
-
-.ep-input:focus {
-    border-color: var(--color-caramel);
-    box-shadow: 0 0 0 3px rgba(196,129,59,0.12);
-}
-
-input[type="date"].ep-input {
-    color-scheme: light;
-}
-
-.ep-input[readonly] {
-    background-color: rgba(107, 58, 42, 0.05);
-    color: var(--color-roast);
-    cursor: not-allowed;
-    border-color: rgba(107, 58, 42, 0.1);
-}
-
-.ep-input[readonly]:focus {
-    box-shadow: none;
-    border-color: rgba(107, 58, 42, 0.1);
-}
-
-.ep-hint {
-    font-family: var(--font);
-    font-size: 11px;
-    color: var(--color-steam);
-    line-height: 1.5;
 }
 
 .ep-divider {
-    height: 1px;
-    background: rgba(107,58,42,0.1);
-    margin: 12px 0 0;
+    height: 1.5px;
+    background: rgba(44, 24, 16, 0.1);
+    margin: 35px 0;
+    border: none;
 }
 
+/* Layout de Rejilla para los campos dobles */
+.ep-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+@media (min-width: 650px) {
+    .ep-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ════════════════════════════════════════════════════════════
+   BLINDAJE ABSOLUTO DE CAMPOS (CORRECCIÓN TOTAL DE GRISÁCEOS)
+   ════════════════════════════════════════════════════════════ */
+.ep-group {
+    margin-bottom: 20px;
+}
+
+.ep-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--color-espresso);
+    font-size: 0.95rem;
+}
+
+/* El Wrapper controla el fondo BLANCO real y el borde */
+.ep-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: #FFFFFF !important; /* Forzamos blanco puro */
+    border: 1.5px solid rgba(107, 58, 42, 0.3);
+    border-radius: 8px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+/* El icono flotante no tiene fondo que manche la barra */
+.ep-input-icon {
+    padding: 0 14px;
+    color: var(--color-caramel);
+    font-size: 1rem;
+    background: transparent !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* El input nativo queda limpio y transparente sobre el wrapper */
+.ep-input {
+    flex: 1;
+    width: 100%;
+    padding: 12px 14px 12px 0; /* padding izquierdo en 0 ya que hereda el del icono */
+    border: none !important;
+    background: transparent !important;
+    font-family: var(--font);
+    font-size: 0.95rem;
+    color: var(--color-espresso);
+    box-sizing: border-box;
+    height: auto;
+}
+
+/* Corrección para que los inputs tipo fecha se adapten al flexbox */
+input[type="date"].ep-input {
+    padding-right: 14px;
+}
+
+.ep-input:focus {
+    outline: none !important;
+}
+
+/* Ajustes específicos para el Textarea de la Biografía */
+textarea.ep-input {
+    padding-top: 12px;
+    resize: vertical;
+}
+
+/* Estados de Enfoque activos (Focus Within) */
+.ep-input-wrapper:focus-within {
+    border-color: var(--color-espresso) !important;
+    box-shadow: 0 0 0 4px rgba(111, 78, 55, 0.15) !important;
+}
+
+.ep-hint {
+    display: block;
+    margin-top: 6px;
+    font-size: 0.8rem;
+    color: var(--color-roast);
+    opacity: 0.85;
+    line-height: 1.4;
+}
+
+/* ════════════════════════════════════════════════════════════
+   ZONA DE PELIGRO (ESTILOS ESPECÍFICOS)
+   ════════════════════════════════════════════════════════════ */
 .ep-section--danger {
-    background: rgba(185,64,64,0.04);
-    border: 1px solid rgba(185,64,64,0.12);
-    border-radius: 10px;
+    margin-top: 10px;
+    background-color: var(--color-caramel);
     padding: 20px;
-    margin-top: 12px;
+    border-radius: 12px;
 }
 
 .ep-section__title--danger {
-    color: #a33;
+    color: var(--color-error) !important;
 }
 
 .ep-section__title--danger i {
-    color: var(--color-error);
+    color: var(--color-error) !important;
 }
 
 .ep-danger__desc {
-    font-family: var(--font);
-    font-size: 13px;
-    color: rgba(185,64,64,0.75);
-    margin-bottom: 16px;
-    line-height: 1.6;
+    margin: 0 0 16px 0;
+    color: var(--color-roast);
+    font-size: 0.9rem;
+    line-height: 1.5;
 }
 
+/* ════════════════════════════════════════════════════════════
+   BOTONES Y ACCIONES (ACCIONES CENTRADAS)
+   ════════════════════════════════════════════════════════════ */
 .ep-actions {
     display: flex;
+    flex-direction: column-reverse;
+    gap: 12px;
+    margin-top: 30px;
+    padding-top: 30px;
+    border-top: 1.5px solid rgba(44, 24, 16, 0.1);
+}
+
+.ep-actions--centered {
+    justify-content: center;
     align-items: center;
-    justify-content: flex-end;
-    gap: 10px;
-    padding-top: 28px;
+}
+
+@media (min-width: 480px) {
+    .ep-actions {
+        flex-direction: row;
+    }
 }
 
 .ep-btn {
+    font-family: var(--font);
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
     display: inline-flex;
     align-items: center;
-    gap: 7px;
-    font-family: var(--font);
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    border-radius: 8px;
-    padding: 12px 22px;
-    cursor: pointer;
-    border: none;
+    justify-content: center;
+    gap: 8px;
     text-decoration: none;
-    transition: background 0.2s, box-shadow 0.2s, transform 0.1s, opacity 0.2s;
-    touch-action: manipulation;
-    -webkit-appearance: none;
-    white-space: nowrap;
+    box-sizing: border-box;
+    width: 100%; /* En móviles ocupan todo el ancho */
 }
 
-.ep-btn:active {
-    transform: scale(0.97);
+@media (min-width: 480px) {
+    .ep-btn {
+        width: auto; /* En pantallas medianas recuperan su tamaño natural */
+    }
 }
 
-.ep-btn--primary {
-    background: var(--color-caramel);
-    color: var(--color-espresso);
-    box-shadow: 0 4px 14px rgba(196,129,59,0.35);
-}
-
-.ep-btn--primary:hover {
-    background: var(--color-latte);
-    box-shadow: 0 6px 20px rgba(196,129,59,0.45);
-}
-
-.ep-btn--primary:disabled {
-    opacity: 0.65;
-    cursor: not-allowed;
-    transform: none;
-}
-
+/* Botón Cancelar */
 .ep-btn--ghost {
     background: transparent;
     color: var(--color-roast);
-    border: 1.5px solid rgba(107,58,42,0.25);
+    border: 1.5px solid rgba(107, 58, 42, 0.4);
 }
 
 .ep-btn--ghost:hover {
-    background: rgba(107,58,42,0.06);
+    background: rgba(107, 58, 42, 0.08);
     border-color: var(--color-roast);
 }
 
+/* Botón Guardar Cambios */
+.ep-btn--primary {
+    background: var(--color-caramel);
+    color: white;
+    border: none;
+}
+
+.ep-btn--primary:hover {
+    background: var(--color-roast);
+}
+
+/* Botón Eliminar Cuenta */
 .ep-btn--ghost-danger {
     background: transparent;
     color: var(--color-error);
-    border: 1.5px solid rgba(185,64,64,0.3);
+    border: 1.5px solid rgba(185, 64, 64, 0.4);
 }
 
 .ep-btn--ghost-danger:hover {
-    background: rgba(185,64,64,0.08);
+    background: rgba(185, 64, 64, 0.08);
     border-color: var(--color-error);
 }
 
-/* ════ RESPONSIVE ════ */
-@media (min-width: 480px) {
-    .ep-hero__identity {
-        flex-direction: row;
-        align-items: flex-end;
-        padding: 0 28px;
-        margin-top: -80px;
-    }
-
-    .ep-hero__meta {
-        align-items: flex-start;
-        text-align: left;
-        padding-bottom: 6px;
-    }
-
-    .ep-hero__username {
-        font-size: 22px;
-    }
-}
-
-@media (min-width: 600px) {
-    .ep-body {
-        padding: 32px 28px 80px;
-    }
-
-    .ep-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .ep-field--full {
-        grid-column: 1 / -1;
-    }
-
-    .ep-hero {
-        margin: 16px auto 0;
-        max-width: 680px; 
-    }
-
-    .ep-hero__band {
-        height: 150px;
-    }
-
-    .ep-avatar {
-        width: 116px;
-        height: 116px;
-    }
-
-    .ep-avatar__img {
-        width: 116px;
-        height: 116px;
-    }
-}
-
-@media (min-width: 768px) {
-    .ep-hero {
-        margin: 20px auto 0;
-        max-width: 800px;
-    }
-    
-    .ep-hero__identity {
-        padding: 0 16px; 
-    }
-
-    .ep-body {
-        padding: 36px 0 80px;
-    }
+/* Efecto feedback al hacer clic */
+.ep-btn:active {
+    transform: scale(0.98);
 }

@@ -13,6 +13,8 @@ $global = $lang['global'];
     <title><?= $global['app_name'] ?> — <?= $reg['page-title'] ?></title>
     <link rel="stylesheet" href="assets/css/css.css" />
     <link rel="stylesheet" href="assets/css/register.css" />
+    <link rel="stylesheet" href="/assets/css/modals/modals.css" />
+    <link rel="stylesheet" href="/assets/css/modals/generic-modal.css" />
 </head>
 
 <body class="reg-body">
@@ -134,22 +136,15 @@ $global = $lang['global'];
         </main>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="/assets/js/components/modals.js"></script>
+    <?php require_once __DIR__ . '/../../includes/modals/generic_modal.php'; ?>
+
     <script>
-        function togglePass(inputId, iconId) {
-            const input = document.getElementById(inputId);
-            const icon = document.getElementById(iconId);
-            if (input.type === 'password') {
-                input.type = 'text';
-                icon.textContent = '🙈';
-            } else {
-                input.type = 'password';
-                icon.textContent = '👁';
-            }
-        }
+        window.lang = <?= json_encode($lang['js_messages'] ?? []) ?>;
     </script>
 
     <script type="module" src="/assets/js/auth/register.js"></script>
-
 </body>
 
 </html>

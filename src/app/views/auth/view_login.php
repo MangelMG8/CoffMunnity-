@@ -14,7 +14,7 @@ $globalLang = $lang['global'];
     <title><?= $globalLang['app_name'] ?> — <?= $loginLang['page_title'] ?></title>
     <link rel="stylesheet" href="/assets/css/css.css" />
     <link rel="stylesheet" href="/assets/css/login.css" />
-    <link rel="stylesheet" href="/assets/css/modals.css" />
+    <link rel="stylesheet" href="/assets/css/modals/modals.css" />
     <link rel="stylesheet" href="/assets/css/modals/generic-modal.css" />
 </head>
 

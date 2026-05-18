@@ -8,3 +8,4 @@ class IndexController extends Controller {
         require_once __DIR__ . '/../views/index/view_index.php';
     }
 }
+?>
